@@ -104,6 +104,10 @@ The exact frozen source files for `DraculTimelock.sol` and `DraculVestingWallet.
 
 See [AUDIT.md](AUDIT.md) and [SECURITY.md](SECURITY.md).
 
+## Creator
+
+Created by [Fabio Silva Monteiro](https://www.linkedin.com/in/fabio-silva-monteiro/).
+
 ## Official links
 
 - Website: https://draculcybersec.com/draccoin/
