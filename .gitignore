@@ -1,0 +1,13 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+ignition/deployments/
+.env
+.env.*
+*.keystore
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
