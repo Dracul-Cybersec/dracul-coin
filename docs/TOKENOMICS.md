@@ -21,7 +21,7 @@ The deployer retained **0 DRAC** after the initial distribution.
 
 ## Custody semantics
 
-The DAO allocation is held under the Timelock/governance architecture. The staking allocation is a protocol reserve. The team allocation is held by the vesting contract. These allocations should not be described as immediately liquid personal balances.
+The DAO allocation is held under the Timelock/governance architecture. The staking allocation is a protocol reserve held in the deployed staking contract. Operational wallets designated for staking reserves are separate from that contract; a wallet designation alone does not establish its current token balance. The team allocation is held by the vesting contract. These allocations should not be described as immediately liquid personal balances.
 
 ## Market-value warning
 
