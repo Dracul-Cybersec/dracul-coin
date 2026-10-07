@@ -2,26 +2,21 @@
 
 ## Allocation
 
-- **Total Team Allocation:** 15,000,000 DRAC
+**15,000,000 DRAC**
 
-## Vesting Schedule
+## Vesting schedule
 
-| Phase | Date/Time (UTC) |
+| Phase | Date/Time UTC |
 |---|---|
 | Start | 2026-10-06 08:48:07 |
 | Cliff End | 2027-10-06 08:48:07 |
 | Vesting End | 2029-10-05 08:48:07 |
 
-## Beneficiary
+## Contract
 
-- **Address:** `[operational wallet omitted]`
+- Address: `0x6Ec9881FCBf02e13374239653eaDC9573728681f`
+- BaseScan: https://basescan.org/address/0x6Ec9881FCBf02e13374239653eaDC9573728681f
 
-## Vesting Contract
+The beneficiary address is intentionally not duplicated in this public documentation because it is not required to identify the vesting contract. The beneficiary remains publicly inspectable on-chain.
 
-- **Address:** `0x6Ec9881FCBf02e13374239653eaDC9573728681f`
-- **BaseScan:** https://basescan.org/address/0x6Ec9881FCBf02e13374239653eaDC9573728681f
-
-## Schedule Summary
-
-1. **Cliff Period (Year 1):** No tokens are released until the cliff ends on 2027-10-06 08:48:07 UTC.
-2. **Vesting Period (Years 1–3):** Following the cliff, the remaining team allocation vests linearly until the vesting end on 2029-10-05 08:48:07 UTC.
+No team tokens are releasable before the cliff. After the cliff, vesting follows the deployed schedule until the end date.

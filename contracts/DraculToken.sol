@@ -8,6 +8,10 @@ import {ERC20Votes} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Vo
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {Nonces} from "@openzeppelin/contracts/utils/Nonces.sol";
 
+/// @title Dracul Coin (DRAC)
+/// @notice Fixed-supply ERC-20 with burn, permit and timestamp-based governance votes.
+/// @dev Production v2 deliberately has no global transfer pause. This avoids an
+///      administrative action trapping holders or preventing staking withdrawals.
 contract DraculToken is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, Ownable {
     uint256 public constant MAX_SUPPLY = 100_000_000 ether;
 
@@ -20,10 +24,13 @@ contract DraculToken is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, Ownable {
         _mint(initialHolder, MAX_SUPPLY);
     }
 
+    /// @dev Timestamp clock is supported by OpenZeppelin ERC20Votes/GovernorVotes.
     function clock() public view override returns (uint48) {
         return uint48(block.timestamp);
     }
 
+    // ERC-6372 requires this exact uppercase function name.
+    // slither-disable-next-line naming-convention
     function CLOCK_MODE() public pure override returns (string memory) {
         return "mode=timestamp";
     }

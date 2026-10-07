@@ -3,11 +3,25 @@ artifacts/
 cache/
 coverage/
 ignition/deployments/
+
+# Environment and secrets
 .env
 .env.*
+!.env.example
 *.keystore
+*keystore*
 *.pem
 *.key
 *.p12
 *.pfx
+*.seed
+*.mnemonic
+deployer.json
+liquidity.json
+ecosystem.json
+team.json
+
+# Local tooling / OS
 .DS_Store
+.idea/
+.vscode/

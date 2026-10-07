@@ -1,34 +1,29 @@
 # Canonical Base Mainnet Contracts
 
-All contracts below are deployed on **Base Mainnet** (Chain ID: 8453).
+All addresses below are deployed on **Base Mainnet** (Chain ID `8453`).
 
-## DRAC Token
+| Component | Address | Explorer |
+|---|---|---|
+| DRAC Token | `0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70` | https://basescan.org/address/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70 |
+| Timelock / DAO | `0x78D17d3bb3Bb843462D67278622817315Faa6e76` | https://basescan.org/address/0x78D17d3bb3Bb843462D67278622817315Faa6e76 |
+| Governor | `0xF30d56332d575E1F37EB89841C157713C5968Ac4` | https://basescan.org/address/0xF30d56332d575E1F37EB89841C157713C5968Ac4 |
+| Staking | `0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb` | https://basescan.org/address/0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb |
+| Team Vesting | `0x6Ec9881FCBf02e13374239653eaDC9573728681f` | https://basescan.org/address/0x6Ec9881FCBf02e13374239653eaDC9573728681f |
+| Uniswap v2 WETH/DRAC Pool | `0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2` | https://basescan.org/address/0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2 |
 
-- **Address:** `0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70`
-- **BaseScan:** https://basescan.org/token/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
+## Token verification
 
-## Timelock
+The DRAC token source is verified as an exact match on BaseScan.
 
-- **Address:** `0x78D17d3bb3Bb843462DT67278622817315Faa6e76`
-- **BaseScan:** https://basescan.org/address/0x78D17d3bb3Bb843462DT67278622817315Faa6e76
+- Contract name: `DraculToken`
+- Compiler: `v0.8.34+commit.80d5c536`
+- Optimizer: enabled, 200 runs
+- EVM version: Osaka
+- License: MIT
 
-## Governor
+Verified source:
+https://basescan.org/address/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70#code
 
-- **Address:** `0xF30d56332d575E1F37EB89841C157713C5968Ac4`
-- **BaseScan:** https://basescan.org/address/0xF30d56332d575E1F37EB89841C157713C5968Ac4
+## Source publication
 
-## Staking
-
-- **Address:** `0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb`
-- **BaseScan:** https://basescan.org/address/0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb
-
-## Team Vesting
-
-- **Address:** `0x6Ec9881FCBf02e13374239653eaDC9573728681f`
-- **BaseScan:** https://basescan.org/address/0x6Ec9881FCBf02e13374239653eaDC9573728681f
-
-## Uniswap v2 Pool (WETH/DRAC)
-
-- **Address:** `0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2`
-- **BaseScan:** https://basescan.org/address/0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2
-- **Uniswap Trade:** https://app.uniswap.org/swap?chain=base&inputCurrency=ETH&outputCurrency=0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
+See [../contracts/SOURCE-HASHES.md](../contracts/SOURCE-HASHES.md). The repository does not publish guessed source code for a deployed contract.

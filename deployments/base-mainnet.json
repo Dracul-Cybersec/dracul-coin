@@ -13,7 +13,12 @@
   },
   "uniswapV2": {
     "pair": "0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2",
+    "baseAsset": "DRAC",
     "quoteAsset": "WETH",
     "feeBps": 30
-  }
+  },
+  "notes": [
+    "Operational wallet addresses are intentionally omitted from this public metadata unless required to identify a protocol contract.",
+    "All protocol addresses are independently inspectable on BaseScan."
+  ]
 }
