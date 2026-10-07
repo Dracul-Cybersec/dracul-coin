@@ -6,11 +6,11 @@
     "base",
     "cybersecurity"
   ],
-  "timestamp": "2026-10-07T05:39:44Z",
+  "timestamp": "2026-10-07T05:59:13Z",
   "version": {
     "major": 1,
     "minor": 1,
-    "patch": 1
+    "patch": 2
   },
   "tokens": [
     {
@@ -19,7 +19,7 @@
       "name": "Dracul Coin",
       "symbol": "DRAC",
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-512.png"
+      "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-transparent-512.png"
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Dracul Coin (DRAC)
 
 <p align="center">
-  <img src="assets/drac-coin-512.png" width="160" alt="Dracul Coin (DRAC) logo">
+  <img src="assets/drac-coin-transparent-512.png" width="160" alt="Dracul Coin (DRAC) logo">
 </p>
 
 <p align="center">
