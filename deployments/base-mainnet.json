@@ -20,5 +20,14 @@
   "notes": [
     "Operational wallet addresses are intentionally omitted from this public metadata unless required to identify a protocol contract.",
     "All protocol addresses are independently inspectable on BaseScan."
-  ]
+  ],
+  "tokenMetadata": {
+    "name": "Dracul Coin",
+    "symbol": "DRAC",
+    "decimals": 18,
+    "standard": "ERC-20",
+    "initialSupply": "100000000",
+    "maximumSupply": "100000000",
+    "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-512.png"
+  }
 }

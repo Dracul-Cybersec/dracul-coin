@@ -35,3 +35,18 @@ Public contract addresses and transaction hashes are not secrets, but operationa
 Internal tests and static analysis do **not** constitute an independent third-party audit. There is currently no named independent audit report for these contracts.
 
 No bug-bounty payment is promised unless a separate public bounty program explicitly states otherwise.
+
+## Checking changes before publication
+
+Run Gitleaks v8.30.1 or later with the repository configuration:
+
+```sh
+gitleaks git --log-opts="--all" --redact
+gitleaks dir . --redact
+```
+
+The configuration keeps the default detection rules and excludes only the exact public DRAC token contract address that triggers a generic API-key false positive. Do not add broad exclusions for Ethereum keys or arbitrary 64-character hexadecimal strings.
+
+Ignoring or deleting a sensitive file does not remove it from Git history. If an actual credential is discovered, revoke or rotate it before coordinating history cleanup. Public wallet addresses are not credentials, but historical labels can reveal operational associations.
+
+See [docs/REPOSITORY-REVIEW.md](docs/REPOSITORY-REVIEW.md) for the scope and limitations of the latest repository review.
