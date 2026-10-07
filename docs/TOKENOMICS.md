@@ -1,10 +1,10 @@
 # Tokenomics
 
-## Fixed supply
+## Initial and maximum supply
 
 **100,000,000 DRAC**
 
-There is no public mint function. Supply may decrease through token burns.
+The constructor mints this initial supply once. There is no public mint function. Current total supply may decrease through token burns and should be queried on-chain rather than assumed to remain at the initial amount.
 
 ## Initial allocation
 

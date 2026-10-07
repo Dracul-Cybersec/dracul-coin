@@ -11,7 +11,7 @@
 | Parameter | Value |
 |---|---|
 | Proposal Threshold | 1,000,000 DRAC |
-| Quorum | 10,000,000 DRAC / 10% of initial supply |
+| Quorum | 10% of total supply at the proposal snapshot (10,000,000 DRAC at initial supply) |
 | Voting Delay | 1 day |
 | Voting Period | 5 days |
 | Timelock Delay | 2 days |

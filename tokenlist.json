@@ -1,11 +1,16 @@
 {
   "name": "Dracul Coin Token List",
-  "keywords": ["dracul", "drac", "base", "cybersecurity"],
-  "timestamp": "2026-10-07T05:05:00Z",
+  "keywords": [
+    "dracul",
+    "drac",
+    "base",
+    "cybersecurity"
+  ],
+  "timestamp": "2026-10-07T05:39:44Z",
   "version": {
     "major": 1,
     "minor": 1,
-    "patch": 0
+    "patch": 1
   },
   "tokens": [
     {
@@ -14,7 +19,7 @@
       "name": "Dracul Coin",
       "symbol": "DRAC",
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-128.png"
+      "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-512.png"
     }
   ]
 }

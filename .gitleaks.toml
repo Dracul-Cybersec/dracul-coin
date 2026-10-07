@@ -1,0 +1,11 @@
+title = "DRAC public metadata secret scanning"
+
+[extend]
+useDefault = true
+
+# Gitleaks generic-api-key mistakes the named public token address for a key.
+# Only this exact public address is excluded; private keys and other tokens remain scanned.
+[[allowlists]]
+description = "Canonical public DRAC contract address, not a credential"
+regexTarget = "secret"
+regexes = ['''^0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70$''']
