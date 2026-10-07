@@ -1,7 +1,7 @@
 # Dracul Coin (DRAC)
 
 <p align="center">
-  <img src="assets/drac-coin-128.png" width="160" alt="Dracul Coin (DRAC) logo">
+  <img src="assets/drac-coin-512.png" width="160" alt="Dracul Coin (DRAC) logo">
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 ## Status
 
 - **Live on Base Mainnet** — Chain ID `8453`
-- **Fixed maximum supply:** `100,000,000 DRAC`
+- **Initial / maximum supply:** `100,000,000 DRAC`
 - **No public mint function**
 - **Canonical market:** Uniswap v2 WETH/DRAC
 - **Contract source verified on BaseScan:** DRAC token
@@ -39,7 +39,7 @@
 | Standard | ERC-20 |
 | Decimals | 18 |
 | Network | Base Mainnet |
-| Maximum supply | 100,000,000 DRAC |
+| Initial / maximum supply | 100,000,000 DRAC; current supply can decrease through burns |
 
 ## Allocation
 
@@ -57,7 +57,7 @@ The deployment wallet retained **0 DRAC** after initial distribution.
 ## Governance
 
 - Proposal threshold: **1,000,000 DRAC**
-- Quorum target: **10,000,000 DRAC**
+- Quorum: **10% of the total supply at the proposal snapshot** (10,000,000 DRAC at the initial supply; burns can reduce this amount)
 - Voting delay: **1 day**
 - Voting period: **5 days**
 - Timelock minimum delay: **2 days**
