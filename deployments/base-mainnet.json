@@ -28,6 +28,6 @@
     "standard": "ERC-20",
     "initialSupply": "100000000",
     "maximumSupply": "100000000",
-    "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-512.png"
+    "logoURI": "https://raw.githubusercontent.com/Dracul-Cybersec/dracul-coin/main/assets/drac-coin-transparent-512.png"
   }
 }
