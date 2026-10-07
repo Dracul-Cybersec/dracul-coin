@@ -1,0 +1,25 @@
+{
+  "name": "Dracul Coin Token List",
+  "logoURI": "https://draculcybersec.com/draccoin/assets/drac-coin-512.png",
+  "keywords": [
+    "dracul",
+    "drac",
+    "base"
+  ],
+  "timestamp": "2026-10-07T00:00:00.000Z",
+  "tokens": [
+    {
+      "chainId": 8453,
+      "address": "0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70",
+      "name": "Dracul Coin",
+      "symbol": "DRAC",
+      "decimals": 18,
+      "logoURI": "https://draculcybersec.com/draccoin/assets/drac-coin-512.png"
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  }
+}
