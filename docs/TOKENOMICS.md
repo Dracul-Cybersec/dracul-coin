@@ -1,26 +1,28 @@
 # Tokenomics
 
-## Max Supply
+## Fixed supply
 
-The total maximum supply of DRAC is **100,000,000 DRAC**. This supply is fixed.
+**100,000,000 DRAC**
 
-## Allocation
+There is no public mint function. Supply may decrease through token burns.
 
-| Allocation | Amount |
-|---|---|
-| DAO / Timelock | 50,000,000 DRAC |
-| Staking Reserve | 20,000,000 DRAC |
-| Team Vesting | 15,000,000 DRAC |
-| Liquidity | 10,000,000 DRAC |
-| Ecosystem | 5,000,000 DRAC |
-| **Total** | **100,000,000 DRAC** |
+## Initial allocation
 
-## Minting
+| Allocation | Amount | Share |
+|---|---:|---:|
+| DAO / Timelock | 50,000,000 DRAC | 50% |
+| Staking Reserve | 20,000,000 DRAC | 20% |
+| Team Vesting | 15,000,000 DRAC | 15% |
+| Liquidity | 10,000,000 DRAC | 10% |
+| Ecosystem | 5,000,000 DRAC | 5% |
+| **Total** | **100,000,000 DRAC** | **100%** |
 
-- There is **no public mint function**.
-- The supply is fixed at deployment and cannot be increased by anyone, including project founders.
+The deployer retained **0 DRAC** after the initial distribution.
 
-## Burning
+## Custody semantics
 
-- The token supports standard ERC-20 `burn` functionality, allowing holders to permanently remove tokens from circulation.
-- No authority can mint new tokens to offset burns.
+The DAO allocation is held under the Timelock/governance architecture. The staking allocation is a protocol reserve. The team allocation is held by the vesting contract. These allocations should not be described as immediately liquid personal balances.
+
+## Market-value warning
+
+A last pool price multiplied by total supply is only a theoretical FDV. With shallow liquidity, it may differ drastically from the value that could actually be realized through sales.

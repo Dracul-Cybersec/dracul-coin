@@ -1,22 +1,11 @@
 # DRAC Brand Assets
 
-This directory contains logo and brand assets for Dracul Coin (DRAC).
+`drac-coin-128.png` is a repository/web derivative of the official Dracul Coin master artwork.
 
-## Canonical Resources
+Production freeze record for the canonical master:
 
-- **High-resolution logo:** The canonical high-resolution logo is available at
-  [https://draculcybersec.com/draccoin/assets/drac-coin-512.png](https://draculcybersec.com/draccoin/assets/drac-coin-512.png).
+- Original filename: `dracul-coin-logo-master.png`
+- Original dimensions: **1254 × 1254**
+- SHA-256: `4a0712e7832c1e93896a79ef16c02c31ac8c153b3f12b588a7f74b8a8a36e7b0`
 
-- **Project page:** The canonical project page is
-  [https://draculcybersec.com/draccoin/](https://draculcybersec.com/draccoin/).
-
-## SVG Logo Usage
-
-The `drac-logo.svg` in this directory is provided as a compact, self-contained
-SVG for **documentation and public metadata** (e.g. GitHub badges, repository
-headers, social-card previews). It embeds the high-resolution PNG via an
-`&lt;image&gt;` tag.
-
-**Do not replace this SVG with unrelated artwork.** If a new logo is needed,
-update `drac-logo.svg` to reference the correct canonical image URL and
-re-upload it here.
+The resized repository asset is provided for display and token metadata. It must not be replaced with unrelated artwork.
