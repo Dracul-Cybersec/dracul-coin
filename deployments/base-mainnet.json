@@ -1,0 +1,25 @@
+{
+  "project": "Dracul Coin",
+  "symbol": "DRAC",
+  "network": "Base Mainnet",
+  "chainId": 8453,
+  "deployedAt": "2026-10-06T08:48:07Z",
+  "contracts": {
+    "token": "0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70",
+    "timelock": "0x78D17d3bb3Bb843462D67278622817315Faa6e76",
+    "vesting": "0x6Ec9881FCBf02e13374239653eaDC9573728681f",
+    "governor": "0xF30d56332d575E1F37EB89841C157713C5968Ac4",
+    "staking": "0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb"
+  },
+  "wallets": {
+    "deployer": "0x79183E310255d11E0eCe6060bD985378B61445C1",
+    "liquidity": "0xd4F5bEdF335e90AB8d5d17702becCd1707E8F7aF",
+    "ecosystem": "0xe813cb7516feC5202c676bB05480051E20268aE6",
+    "teamVestingBeneficiary": "0x3370cF18127bE07Dbe891410ae647C46b3D88Ff1"
+  },
+  "uniswapV2": {
+    "pair": "0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2",
+    "quoteAsset": "WETH",
+    "feeBps": 30
+  }
+}
