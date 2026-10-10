@@ -110,8 +110,8 @@ Created by [Fabio Silva Monteiro](https://www.linkedin.com/in/fabio-silva-montei
 
 ## Official links
 
-- Temporary official website: https://dracul-cybersec.github.io/dracul-coin/
-- Custom domain (temporarily unavailable): https://draculcybersec.com/draccoin/
+- Official website: https://draculcybersec.com/
+- GitHub Pages mirror: https://dracul-cybersec.github.io/dracul-coin/
 - BaseScan: https://basescan.org/token/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
 - Verified token code: https://basescan.org/address/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70#code
 - Uniswap trade: https://app.uniswap.org/swap?chain=base&inputCurrency=ETH&outputCurrency=0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
