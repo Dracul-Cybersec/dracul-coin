@@ -908,64 +908,50 @@ img[src*="book-pentest-cover"] {
 }
 
 .open-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: 72px;
-  height: 72px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: rgba(239, 32, 32, 0.92);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.42);
-  transform: translate(-50%, -50%);
-}
-
-.book-card .open-badge,
-.book-preview .open-badge {
+  position: absolute !important;
   top: 14px !important;
   right: 14px !important;
   left: auto !important;
   bottom: auto !important;
-  transform: none !important;
+  display: grid !important;
   width: 52px !important;
   height: 52px !important;
+  place-items: center !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  background: rgba(239, 32, 32, 0.92) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.42) !important;
+  transform: none !important;
+  z-index: 2 !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+.content-preview:hover .open-badge,
+.content-preview:focus-visible .open-badge {
+  background: #e50914 !important;
+  transform: scale(1.06) !important;
 }
 
 .open-badge::before,
 .open-badge::after {
-  position: absolute;
-  content: "";
+  position: absolute !important;
+  content: "" !important;
 }
 
 .open-badge::before {
-  width: 24px;
-  height: 24px;
-  border-top: 4px solid #fff;
-  border-right: 4px solid #fff;
-  transform: translate(-3px, 3px);
-}
-
-.book-card .open-badge::before,
-.book-preview .open-badge::before {
   width: 17px !important;
   height: 17px !important;
-  border-top-width: 3px !important;
-  border-right-width: 3px !important;
+  border-top: 3px solid #fff !important;
+  border-right: 3px solid #fff !important;
+  border-bottom: none !important;
+  border-left: none !important;
   transform: translate(-2px, 2px) !important;
 }
 
 .open-badge::after {
-  width: 32px;
-  height: 4px;
-  background: #fff;
-  transform: rotate(-45deg);
-}
-
-.book-card .open-badge::after,
-.book-preview .open-badge::after {
   width: 23px !important;
   height: 3px !important;
+  background: #fff !important;
+  transform: rotate(-45deg) !important;
 }
 
 .content-card > div:not(.content-media) {
@@ -1026,19 +1012,27 @@ img[src*="book-pentest-cover"] {
 }
 
 .shodan-media {
+  position: relative;
   display: grid;
   place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 8.2;
   overflow: hidden;
   text-align: center;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+  cursor: pointer;
   background:
     linear-gradient(135deg, rgba(239, 32, 32, 0.24), rgba(10, 10, 10, 0.6)),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     #101010;
   background-size: auto, 36px 36px, 36px 36px;
+  box-sizing: border-box;
 }
 
-.shodan-media span {
+.shodan-media > span:not(.open-badge) {
   display: block;
   width: 100%;
   color: transparent;
@@ -1048,6 +1042,13 @@ img[src*="book-pentest-cover"] {
   line-height: 1;
   text-align: center;
   -webkit-text-stroke: 1px rgba(239, 32, 32, 0.8);
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.shodan-media:hover > span:not(.open-badge),
+.shodan-media:focus-visible > span:not(.open-badge) {
+  transform: scale(1.035);
+  filter: brightness(1.2);
 }
 
 .modal {
@@ -2366,8 +2367,10 @@ img[src*="book-pentest-cover"] {
   }
 
   .open-badge {
-    width: 58px;
-    height: 58px;
+    width: 48px !important;
+    height: 48px !important;
+    top: 10px !important;
+    right: 10px !important;
   }
 
   .book-preview img {
