@@ -1,0 +1,13 @@
+# robots.txt for draculcybersec.com
+# Permite rastreamento de páginas públicas e indexação de serviços
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /styles.css*
+Allow: /script.js*
+
+# Bloqueia rotas e diretórios internos de backend/API
+Disallow: /api/
+
+# Localização do mapa do site para indexadores (Google, Bing, etc.)
+Sitemap: https://draculcybersec.com/sitemap.xml

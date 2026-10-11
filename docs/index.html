@@ -1,4 +1,782 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dracul Coin (DRAC) · Base</title><meta name="description" content="Página oficial do Dracul Coin: contrato na Base, tokenomics, documentação e criador."><link rel="icon" href="assets/drac-coin.png"><link rel="canonical" href="https://draculcybersec.com/"><meta property="og:title" content="Dracul Coin (DRAC)"><meta property="og:image" content="https://draculcybersec.com/assets/drac-banner.jpg"><style>
-:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101014;color:#eee}body{margin:0;line-height:1.65}main,header,footer{max-width:1040px;margin:auto;padding:24px}a{color:#ff9595;overflow-wrap:anywhere}a:focus-visible{outline:2px solid #fff;outline-offset:4px}h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.15;margin:0}h2{margin-top:0}section{margin:24px 0;padding:24px;border:1px solid #393940;border-radius:16px;background:#19191f}.hero{display:flex;align-items:center;gap:36px}.hero img{width:clamp(120px,24vw,220px);height:auto}.hero p{color:#ddd}.links{display:flex;flex-wrap:wrap;gap:16px}table{border-collapse:collapse;width:100%;text-align:left}th,td{padding:12px;border-bottom:1px solid #393940}td{overflow-wrap:anywhere}code{overflow-wrap:anywhere;font-size:1rem}small{color:#ccc}.notice{border-left:3px solid #38dc70;padding:12px 20px;background:#19241f}.table-wrap{overflow-x:auto}.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px}@media(max-width:650px){.hero{flex-direction:column;align-items:flex-start}.hero>img{align-self:center}th,td{padding:8px}main,header,footer{padding:16px}section{padding:16px}}
-</style></head><body><a class="skip" href="#main">Ir ao conteúdo</a><header><strong>DRACUL COIN · BASE MAINNET</strong></header><main id="main"><div class="notice">Página oficial do projeto Dracul Coin (DRAC) na Base Mainnet. Domínio oficial draculcybersec.com ativo.</div><section class="hero"><img src="assets/drac-coin.png" alt="Emblema circular do Dracul Coin com dragão vermelho" width="512" height="512"><div><h1>Dracul Coin</h1><p>DRAC é um token ERC-20 na Base Mainnet, criado por Fábio Silva Monteiro e associado ao projeto Dracul Cybersec.</p><div class="links"><a href="https://github.com/Dracul-Cybersec/dracul-coin">GitHub oficial</a><a href="https://basescan.org/token/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70">Token no BaseScan</a></div></div></section><section><h2>Identificação do token</h2><p><strong>Símbolo:</strong> DRAC · <strong>Rede:</strong> Base Mainnet (8453) · <strong>Decimais:</strong> 18</p><p><strong>Contrato:</strong><br><code>0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70</code></p><p>Verifique o endereço completo ao localizar o ativo. Outros tokens com o mesmo símbolo não indicam associação com este projeto.</p></section><section><h2>Oferta e distribuição inicial</h2><p>Oferta inicial e máxima: <strong>100.000.000 DRAC</strong>. Sem função pública de emissão. Queimas podem reduzir a oferta total.</p><div class="table-wrap"><table><thead><tr><th>Alocação</th><th>DRAC</th><th>Percentual</th></tr></thead><tbody><tr><th>DAO / Timelock</th><td>50.000.000</td><td>50%</td></tr><tr><th>Reserva de staking</th><td>20.000.000</td><td>20%</td></tr><tr><th>Vesting da equipe</th><td>15.000.000</td><td>15%</td></tr><tr><th>Liquidez</th><td>10.000.000</td><td>10%</td></tr><tr><th>Ecossistema</th><td>5.000.000</td><td>5%</td></tr></tbody></table></div><p>Alocação inicial não equivale à oferta em circulação. A reserva de staking está no contrato de staking; carteiras operacionais são distintas dos contratos. O vesting da equipe inicia em 06/10/2026, com cliff em 06/10/2027 e término em 05/10/2029 (UTC).</p><a href="https://github.com/Dracul-Cybersec/dracul-coin/blob/main/docs/TOKENOMICS.md">Tokenomics e custódia</a></section><section><h2>Contratos públicos</h2><div class="table-wrap"><table><tbody><tr><th scope="row">Token DRAC</th><td><a href="https://basescan.org/address/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70">0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70</a></td></tr><tr><th scope="row">Timelock / DAO</th><td><a href="https://basescan.org/address/0x78D17d3bb3Bb843462D67278622817315Faa6e76">0x78D17d3bb3Bb843462D67278622817315Faa6e76</a></td></tr><tr><th scope="row">Contrato de vesting da equipe</th><td><a href="https://basescan.org/address/0x6Ec9881FCBf02e13374239653eaDC9573728681f">0x6Ec9881FCBf02e13374239653eaDC9573728681f</a></td></tr><tr><th scope="row">Governor</th><td><a href="https://basescan.org/address/0xF30d56332d575E1F37EB89841C157713C5968Ac4">0xF30d56332d575E1F37EB89841C157713C5968Ac4</a></td></tr><tr><th scope="row">Contrato de staking</th><td><a href="https://basescan.org/address/0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb">0xdC5b4D7707303Cafb4308E42e3E6cB1813cC03cb</a></td></tr><tr><th scope="row">Pool Uniswap v2 WETH / DRAC</th><td><a href="https://basescan.org/address/0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2">0xb6e16DBaA61B188Ef6ccF845E38540471854C3c2</a></td></tr></tbody></table></div></section><section><h2>Mercado e governança</h2><p>Mercado documentado: Uniswap v2 na Base, par WETH / DRAC, taxa da pool de 0,30%. A liquidez é pequena e experimental.</p><p>Governança: limiar de proposta de 1.000.000 DRAC, quorum de 10% da oferta no snapshot, atraso de votação de 1 dia, período de 5 dias e atraso mínimo do Timelock de 2 dias.</p><div class="links"><a href="https://app.uniswap.org/swap?chain=base&amp;inputCurrency=ETH&amp;outputCurrency=0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70">Abrir Uniswap</a><a href="https://github.com/Dracul-Cybersec/dracul-coin/blob/main/docs/GOVERNANCE.md">Documentação da governança</a></div></section><section><h2>Transparência e segurança</h2><p>Projeto experimental. Não há promessa de valorização ou retorno. O projeto não declara auditoria independente. Tokens depositados no contrato de staking não preservam automaticamente o poder de voto individual.</p><div class="links"><a href="https://github.com/Dracul-Cybersec/dracul-coin/blob/main/AUDIT.md">Revisão e limitações conhecidas</a><a href="https://github.com/Dracul-Cybersec/dracul-coin/blob/main/SECURITY.md">Política de segurança</a></div></section><section><h2>Criador e contato</h2><p><strong>Fábio Silva Monteiro</strong> · Dracul Cybersec</p><div class="links"><a href="https://www.linkedin.com/in/fabio-silva-monteiro/">LinkedIn do criador</a><a href="https://github.com/Dracul-Cybersec/dracul-coin/issues">Contato pelo GitHub</a></div><p><small>E-mail do projeto: support@draculcybersec.com. Nunca publique senhas ou chaves privadas nas issues.</small></p></section></main><footer><small>Dracul Coin · Informações do projeto em 07/10/2026. Saldos e condições de mercado variam; consulte os registros na blockchain.</small></footer></body></html>
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><script>document.documentElement.setAttribute('data-locale-initializing','');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Dracul Cybersec | Red Team Offensive Security</title>
+<meta content="Dracul Cybersec executa Red Team, pentest ofensivo, pesquisa de vulnerabilidades e validação de caminhos reais de ataque." name="description"/>
+<meta content="pentest, red team, cibersegurança, seguranca ofensiva, active directory, pentest web, pentest mobile, api security, dracul cybersec" name="keywords"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<link href="https://draculcybersec.com/" rel="canonical"/>
+<meta content="#0a0a0a" name="theme-color"/>
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta content="pt_BR" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="Dracul Cybersec | Red Team &amp; Pentest Ofensivo" property="og:title"/>
+<meta content="Operações de Red Team e Pentests avançados em aplicações web, mobile, APIs e nuvem com validação prática e reteste incluso." property="og:description"/>
+<meta content="https://draculcybersec.com/" property="og:url"/>
+<meta content="Dracul Cybersec" property="og:site_name"/>
+<meta content="https://draculcybersec.com/assets/dracul-brand-mark.png" property="og:image"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Dracul Cybersec | Red Team &amp; Pentest Ofensivo" name="twitter:title"/>
+<meta content="Operações ofensivas para provar caminhos reais de ataque antes que virem incidentes." name="twitter:description"/>
+<meta content="https://draculcybersec.com/assets/dracul-brand-mark.png" name="twitter:image"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link as="image" href="assets/dracul-brand-mark.png" rel="preload"/>
+<link href="styles.css?v=20261007t" rel="stylesheet"/>
+<!-- Schema.org JSON-LD para indexadores (Google, Bing) -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://draculcybersec.com/#organization",
+          "name": "Dracul Cybersec",
+          "url": "https://draculcybersec.com/",
+          "logo": "https://draculcybersec.com/assets/dracul-brand-mark.png",
+          "image": "https://draculcybersec.com/assets/dracul-hero-dragon.png",
+          "description": "Empresa de segurança cibernética especializada em Red Team, Pentests avançados Web, Mobile, APIs, Nuvem e Active Directory com evidências reais e reteste incluso.",
+          "priceRange": "$$",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Brazil"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Segurança Ofensiva",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Pentest Web, Mobile & APIs",
+                  "description": "Identificação e exploração de vulnerabilidades críticas em aplicações web, mobile e APIs com validação prática sem falsos positivos."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Operações de Red Team",
+                  "description": "Simulações de ataque de alta fidelidade simulando adversários reais para avaliar a resiliência e detecção de incidentes."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Active Directory & Segurança em Nuvem",
+                  "description": "Mapeamento de caminhos de escalação de privilégios e abuso de permissões em Active Directory, AWS, Azure e GCP."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Attack Surface Management",
+                  "description": "Mapeamento contínuo de superfície de ataque exposta na internet e identificação preventiva de ativos esquecidos."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Exercício de Purple Team",
+                  "description": "Atuação integrada entre equipe ofensiva e defensiva para calibração de alertas SIEM/SOC e capacidade de resposta."
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+<link href="shared-scale.css?v=20261007t" rel="stylesheet"/><link href="/shared-navbar.css?v=20261007t" rel="stylesheet"/></head>
+<body>
+<header class="site-header" data-header="">
+<a aria-label="Dracul Cybersec" class="brand" href="#inicio">
+<img alt="" height="512" src="assets/dracul-brand-mark.png" width="512"/>
+<span>
+<strong>Dracul</strong>
+<small>Cybersec</small>
+</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" class="nav-toggle" data-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+<span class="sr-only">Abrir menu</span>
+</button>
+<nav class="nav" data-nav="" id="nav">
+<div class="nav-mobile-top">
+<span class="nav-mobile-title">MENU // SISTEMA</span>
+<span class="nav-mobile-badge">TERMINAL OFENSIVO</span>
+</div>
+<div class="nav-links-list">
+<a class="is-active" href="#inicio">
+<span class="nav-item-num">01</span>
+<span class="nav-item-name">Home</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#sobre">
+<span class="nav-item-num">02</span>
+<span class="nav-item-name">Sobre</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#metodo">
+<span class="nav-item-num">03</span>
+<span class="nav-item-name">Método</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#servicos">
+<span class="nav-item-num">04</span>
+<span class="nav-item-name">Serviços</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#relatorio">
+<span class="nav-item-num">05</span>
+<span class="nav-item-name">Relatório</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#conteudo">
+<span class="nav-item-num">06</span>
+<span class="nav-item-name">Conteúdo</span>
+<span aria-hidden="true" class="nav-item-arrow">→</span>
+</a>
+<a href="#dracul-coin"><span class="nav-item-num">07</span><span class="nav-item-name">Dracul Coin</span><span aria-hidden="true" class="nav-item-arrow">→</span></a>
+</div>
+<!-- <a href="#academy">Academy</a> -->
+<div class="nav-cta-box">
+<a class="nav-cta-btn" href="#contato">
+<span class="nav-cta-desktop">Contato</span>
+<span class="nav-cta-mobile">Falar com Especialistas</span>
+<span aria-hidden="true" class="nav-cta-arrow">→</span>
+</a>
+</div>
+<div class="nav-mobile-bottom">
+<div class="nav-status-indicator">
+<span class="pulse-dot"></span>
+<span>DRACUL CYBERSEC // RED TEAM</span>
+</div>
+<span class="nav-system-status">ONLINE</span>
+</div>
+</nav>
+<label class="portfolio-language"><span>Language</span><select aria-label="Language" id="portfolio-language"><option lang="en" value="en">English</option><option lang="es" value="es">Español</option><option lang="pt-BR" value="pt">Português</option></select></label>
+</header>
+<main>
+<section aria-labelledby="hero-title" class="hero" id="inicio">
+<div aria-hidden="true" class="hero-bg-word">DRACUL</div>
+<div class="container hero-grid">
+<div class="hero-copy">
+<h1 id="hero-title">
+              Encontramos <span>falhas reais</span> antes que elas virem incidente.
+            </h1>
+<p class="lead">
+              Operações ofensivas para provar caminhos de ataque em aplicações, nuvem, identidade e perímetro. Menos
+              checklist, mais evidência técnica e correção priorizada.
+            </p>
+<div class="hero-actions">
+<a class="button primary" href="#contato">Entre em contato</a>
+<a class="button outline" href="#sobre">Saiba mais</a>
+<!-- <a class="button outline" href="http://localhost/index.php">Acessar Academy</a> -->
+</div>
+</div>
+<div aria-label="Dragão Dracul Cybersec" class="hero-art">
+<div aria-hidden="true" class="dragon-halo"></div>
+<img alt="Dragão cybernético Dracul Cybersec" height="1536" src="assets/dracul-hero-dragon.png" width="1024"/>
+</div>
+</div>
+</section>
+<section aria-labelledby="about-title" class="about-section" id="sobre">
+<div class="container about-grid">
+<div class="about-dragon">
+<img alt="Dragão da Dracul Cybersec" height="1536" src="assets/dracul-hero-dragon.png" width="1024"/>
+</div>
+<div class="about-copy">
+<h2 id="about-title">Dracul Cybersec</h2>
+<p>
+              A Dracul Cybersec é uma empresa de cibersegurança especializada em pentest, Red Team e pesquisa de vulnerabilidades. Ajudamos organizações a identificar falhas e entender os riscos em seus ambientes digitais.
+            </p>
+<p>
+              Nossas avaliações partem de um escopo autorizado e conectam evidências técnicas ao impacto no negócio. Cada entrega orienta a priorização das correções e o reteste para validar a proteção dos ativos.
+            </p>
+<p>
+              Trabalhamos com operações orientadas a evidências reais e zero falsos positivos, com relatórios técnicos acionáveis para times de engenharia e visão estratégica para a liderança.
+            </p>
+<div class="about-actions">
+<a class="button primary compact" href="#contato">Solicitar avaliação</a>
+<a class="button outline compact" href="#servicos">Conhecer serviços</a>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="method-title" class="method-section" id="metodo">
+<div class="container method-grid">
+<div>
+<h2 id="method-title">Etapas corretas de um pentest profissional.</h2>
+</div>
+<ol class="steps">
+<li><span>01</span><strong>Planejamento</strong><p>Definição de escopo, autorização, objetivos, janela, contatos e regras de engajamento.</p></li>
+<li><span>02</span><strong>Reconhecimento</strong><p>Coleta de informações públicas, ativos, domínios, tecnologias, usuários e superfície exposta.</p></li>
+<li><span>03</span><strong>Enumeração</strong><p>Mapeamento de portas, serviços, versões, diretórios, permissões, identidades e pontos de entrada.</p></li>
+<li><span>04</span><strong>Análise</strong><p>Validação técnica de vulnerabilidades, priorização por impacto e escolha dos caminhos exploráveis.</p></li>
+<li><span>05</span><strong>Exploração</strong><p>Execução controlada de provas de conceito, abuso de falhas e demonstração do impacto real.</p></li>
+<li><span>06</span><strong>Relatório e reteste</strong><p>Entrega das evidências, plano de correção, recomendação técnica e reteste após mitigação.</p></li>
+</ol>
+</div>
+</section>
+<section aria-label="Serviços" class="services-section" id="servicos">
+<div class="container pricing-grid">
+<article class="price-card">
+<header class="price-head">
+<span class="price-index">01</span>
+<h3>Auditoria Express</h3>
+<p class="price-for">Para empresas pequenas que querem saber se estão muito expostas.</p>
+</header>
+<p class="price-value"><span class="price-currency">R$</span>2.500</p>
+<p class="price-term">Entrega em 2–3 dias</p>
+<ul class="price-list">
+<li>Reconhecimento básico</li>
+<li>Superfície externa + scan controlado</li>
+<li>Revisão manual limitada</li>
+<li>Relatório com principais riscos</li>
+</ul>
+<a class="button outline compact price-cta" href="#contato">Solicitar proposta</a>
+</article>
+<article class="price-card">
+<header class="price-head">
+<span class="price-index">02</span>
+<span class="price-badge">Pacote de entrada</span>
+<h3>Pentest Web Start</h3>
+<p class="price-for">Primeiro pentest de uma aplicação web pequena ou média.</p>
+</header>
+<p class="price-value"><span class="price-currency">R$</span>6.500</p>
+<p class="price-term">Entrega em ~5 dias</p>
+<ul class="price-list">
+<li>1 aplicação web</li>
+<li>OWASP Top 10</li>
+<li>Autenticação, sessão e acesso</li>
+<li>Uploads, formulários e endpoints</li>
+<li>Relatório técnico + 1 reteste</li>
+</ul>
+<a class="button outline compact price-cta" href="#contato">Solicitar proposta</a>
+</article>
+<article class="price-card is-featured">
+<header class="price-head">
+<span class="price-index">03</span>
+<span class="price-badge">Mais recomendado</span>
+<h3>Pentest Web Pro</h3>
+<p class="price-for">Sistema web real com usuários, permissões e API.</p>
+</header>
+<p class="price-value"><span class="price-currency">R$</span>12.000</p>
+<p class="price-term">Entrega em 7–10 dias</p>
+<ul class="price-list">
+<li>Aplicação web média + API</li>
+<li>Até 3 perfis de usuário</li>
+<li>Lógica de negócio, autorização e IDOR</li>
+<li>XSS, SQLi, SSRF, upload e auth bypass</li>
+<li>Relatório exec. + técnico, call e reteste</li>
+</ul>
+<a class="button primary compact price-cta" href="#contato">Solicitar proposta</a>
+</article>
+<article class="price-card">
+<header class="price-head">
+<span class="price-index">04</span>
+<h3>Pentest Web/API Advanced</h3>
+<p class="price-for">Para cliente com sistema mais sério e dados sensíveis.</p>
+</header>
+<p class="price-value"><span class="price-currency">R$</span>20.000</p>
+<p class="price-term">Entrega em 10–15 dias</p>
+<ul class="price-list">
+<li>Aplicação web + API</li>
+<li>Múltiplos perfis + painel admin</li>
+<li>Fluxos sensíveis e autorização profunda</li>
+<li>Exposição de dados + recon externo</li>
+<li>Relatório exec. + técnico, plano e reteste</li>
+</ul>
+<a class="button outline compact price-cta" href="#contato">Solicitar proposta</a>
+</article>
+<article class="price-card">
+<header class="price-head">
+<span class="price-index">05</span>
+<h3>Auditoria Externa Completa</h3>
+<p class="price-for">Para empresas com domínio, subdomínios, aplicações e infraestrutura externa.</p>
+</header>
+<p class="price-value"><span class="price-currency">R$</span>32.000</p>
+<p class="price-term">Entrega em 15–20 dias</p>
+<ul class="price-list">
+<li>Domínios, subdomínios e superfície externa</li>
+<li>Testes web, API e infraestrutura</li>
+<li>Validação manual de vulnerabilidades</li>
+<li>Priorização de risco</li>
+<li>Relatório exec. + técnico, reunião e reteste</li>
+</ul>
+<a class="button outline compact price-cta" href="#contato">Solicitar proposta</a>
+</article>
+</div>
+</section>
+<section aria-labelledby="proof-title" class="proof-section" id="relatorio">
+<div class="container proof-grid">
+<div>
+<h2 id="proof-title">Relatório que serve para decisão técnica e executiva.</h2>
+<p>
+              Toda entrega separa o que o gestor precisa para decidir do que a equipe precisa para corrigir:
+              risco de negócio e prioridade de um lado, prova técnica reproduzível do outro. Sem alarmismo e
+              sem checklist genérico — apenas o que está realmente exposto e o que fazer primeiro.
+            </p>
+</div>
+<div class="proof-list">
+<p><strong>Resumo executivo</strong><span>Uma página em linguagem de negócio: nível de risco geral, exposições críticas e a decisão recomendada para quem aprova orçamento.</span></p>
+<p><strong>Cadeia de ataque</strong><span>O caminho real do atacante de ponta a ponta: ponto de entrada, exploração, escalada de privilégio, movimentação lateral e impacto final.</span></p>
+<p><strong>Severidade e priorização</strong><span>Cada achado classificado por CVSS, probabilidade de exploração e impacto no negócio — definindo objetivamente a ordem do que corrigir.</span></p>
+<p><strong>Evidência reproduzível</strong><span>Requests, payloads, comandos, prints e logs com os passos mínimos para sua equipe reproduzir e confirmar cada falha.</span></p>
+<p><strong>Correção priorizada</strong><span>Mitigação prática com responsável (owner), esforço estimado, risco residual e reteste para comprovar que a falha foi fechada.</span></p>
+</div>
+</div>
+</section>
+<section aria-label="Conteúdo" class="content-section" id="conteudo">
+<div class="container content-grid">
+<article class="content-card feature-card">
+<div aria-hidden="true" class="content-media shodan-media">
+<span>SHODAN</span>
+</div>
+<div>
+<p class="content-type">Guia rápido</p>
+<h3>O que é o Shodan e por que ele importa</h3>
+<p>
+                Entenda como o Shodan funciona: um motor de busca para dispositivos, serviços e tecnologias expostas na
+                internet, usado em reconhecimento, inventário de ativos e validação de superfície de ataque.
+              </p>
+<button class="content-action" data-modal-target="article-shodan-modal" type="button">
+                Ler guia
+              </button>
+</div>
+</article>
+<article class="content-card">
+<button aria-label="Ler artigo sobre câmeras expostas na internet" class="content-preview" data-modal-target="post-shodan-modal" type="button">
+<img alt="" height="577" src="assets/linkedin-shodan-post-thumb.jpg" width="1280"/>
+<span aria-hidden="true" class="open-badge"></span>
+</button>
+<div>
+<p class="content-type">Artigo no LinkedIn</p>
+<h3>Câmeras expostas na internet: risco real</h3>
+<p>
+                Caso prático sobre webcams e câmeras IP mal configuradas, com foco nos riscos de privacidade, exposição
+                de RTSP, credenciais padrão e medidas para reduzir acesso indevido.
+              </p>
+<button class="content-action" data-modal-target="post-shodan-modal" type="button">
+                Ler conteúdo
+              </button>
+</div>
+</article>
+<article class="content-card book-card">
+<button aria-label="Abrir livro Introdução ao Pentesting e Cibersegurança" class="content-preview book-preview" data-modal-target="book-pentest-modal" type="button">
+<img alt="Capa do livro Introdução ao Pentesting e Cibersegurança" height="522" src="assets/book-pentest-cover.jpg" width="348"/>
+<span aria-hidden="true" class="open-badge"></span>
+</button>
+<div>
+<p class="content-type">Livro</p>
+<h3>Introdução ao Pentesting e Cibersegurança</h3>
+<p>
+                Fundamentos essenciais para iniciantes em segurança da informação, com foco em base prática para
+                pentest e defesa.
+              </p>
+<button class="content-action" data-modal-target="book-pentest-modal" type="button">
+                Ver livro
+              </button>
+</div>
+</article>
+</div>
+</section>
+<!-- <section class="academy-section" id="academy" aria-labelledby="academy-title">
+        <div class="container academy-grid">
+          <div class="academy-copy">
+            <p class="academy-kicker">// Dracul Cybersec Academy</p>
+            <h2 id="academy-title">Treino ofensivo com método, evidência e ambiente descartável.</h2>
+            <p>
+              Uma plataforma protegida por login e assinatura mensal, com manual técnico completo, checklists
+              persistentes e laboratórios locais iniciados com um clique. O conteúdo acompanha o percurso real de um
+              pentest autorizado — do escopo ao reteste — sem depender da EC2.
+            </p>
+            <ul class="academy-features">
+              <li><strong>Manual aplicado</strong><span>52 capítulos, mais de 1.100 verificações e trilha adaptada ao laboratório atual.</span></li>
+              <li><strong>Laboratórios locais</strong><span>Juice Shop, WebGoat, DVWA e dojo de containers publicados apenas em loopback.</span></li>
+              <li><strong>Dev e Prod</strong><span>Perfis separados, cobrança Stripe em produção e isolamento explícito dos alvos.</span></li>
+              <li><strong>Multilíngue</strong><span>Interface e manual completo com tradução progressiva e cache por idioma.</span></li>
+            </ul>
+            <div class="hero-actions">
+              <a class="button primary" href="http://localhost/index.php">Entrar na Academy</a>
+              <a class="button outline" href="http://localhost/index.php?r=pricing">Ver assinatura</a>
+            </div>
+          </div>
+          <div class="academy-console" aria-label="Fluxo de aprendizagem da Dracul Cybersec Academy">
+            <div class="academy-console-head"><span></span><span></span><span></span><strong>DRACUL_ACADEMY</strong></div>
+            <ol>
+              <li><span>01</span><div><strong>HIPÓTESE</strong><small>escopo · superfície · controle</small></div></li>
+              <li><span>02</span><div><strong>LAB ISOLADO</strong><small>start · teste · evidência</small></div></li>
+              <li><span>03</span><div><strong>IMPACTO MÍNIMO</strong><small>causa raiz · correção</small></div></li>
+              <li><span>04</span><div><strong>RETESTE</strong><small>regressão · relatório</small></div></li>
+            </ol>
+            <img src="assets/dracul-brand-mark.png" alt="" width="512" height="512" />
+          </div>
+        </div>
+      </section> -->
+<section aria-labelledby="coin-intro-title" class="coin-intro-section" id="dracul-coin">
+<div class="container coin-intro-grid"><div class="coin-intro-copy"><p class="coin-intro-label">DRACUL COIN · BASE</p><h2 id="coin-intro-title">Dracul Coin (DRAC)</h2>
+<p>Um projeto independente de criptomoeda associado à Dracul Cybersec, com token ERC-20 implantado na rede Base.</p>
+<p>Conheça o contrato, a documentação pública e o mercado WETH / DRAC na Uniswap v2.</p>
+<div class="coin-intro-facts"><span>Rede Base</span><span>Token ERC-20</span><span>Uniswap v2 · WETH / DRAC</span></div>
+<div class="about-actions"><a class="button primary compact" href="/draccoin/">Conhecer Dracul Coin</a><a class="button outline compact" href="https://github.com/Dracul-Cybersec/dracul-coin" rel="noopener noreferrer" target="_blank">Repositório oficial ↗</a></div>
+</div><a aria-label="Conhecer Dracul Coin" class="coin-intro-visual" href="/draccoin/"><img alt="Moeda Dracul Coin com dragão vermelho" height="512" loading="lazy" src="draccoin/assets/drac-coin-512.png" width="512"/></a></div></section>
+<section aria-labelledby="contact-title" class="contact-section" id="contato">
+<div class="container contact-grid">
+<div>
+<h2 id="contact-title">Pronto para testar sua superfície?</h2>
+<p>
+              Conte o alvo, o objetivo e o escopo desejado. O briefing será transmitido com sigilo absoluto para a nossa equipe técnica de segurança ofensiva para avaliação de viabilidade e agendamento de alinhamento.
+            </p>
+</div>
+<form class="contact-form" data-contact-form="">
+<label>
+<div class="field-header">
+<span>Nome ou Organização</span>
+<span class="char-counter" id="name-counter">80 restantes</span>
+</div>
+<input autocomplete="name" id="briefing-name" maxlength="80" minlength="2" name="name" placeholder="Seu nome ou empresa" required="" type="text"/>
+</label>
+<label>
+<div class="field-header">
+<span>E-mail corporativo / contato</span>
+<span class="char-counter" id="email-counter">100 restantes</span>
+</div>
+<input autocomplete="email" id="briefing-email" maxlength="100" minlength="5" name="email" placeholder="voce@empresa.com" required="" type="email"/>
+</label>
+<label>
+<div class="field-header">
+<span>Escopo e Alvo</span>
+<span class="char-counter" id="scope-counter">1500 restantes</span>
+</div>
+<textarea id="briefing-scope" maxlength="1500" minlength="10" name="scope" placeholder="Ex.: domínio e subdomínios, aplicação web/API, ambiente cloud, Active Directory, nº de perfis e o objetivo do teste" required="" rows="4"></textarea>
+</label>
+<button class="button primary full" type="submit">Enviar briefing</button>
+</form>
+</div>
+</section>
+</main>
+<dialog aria-labelledby="article-shodan-title" class="modal modal-reading-dialog" id="article-shodan-modal">
+<div class="modal-panel">
+<button aria-label="Fechar" class="modal-close" data-modal-close="" type="button">Fechar</button>
+<article class="modal-reading">
+<p class="content-type">Guia rápido</p>
+<h2 id="article-shodan-title">O que é o Shodan e por que ele importa</h2>
+<p class="article-meta">Dracul Cybersec · Fundamentos de reconhecimento · ~5 min de leitura</p>
+<p class="article-lead">
+            O Shodan é um motor de busca para ativos conectados à internet. Enquanto buscadores tradicionais indexam
+            páginas, o Shodan cataloga serviços, banners, portas, certificados, tecnologias e metadados que ajudam a
+            entender o que uma organização ou um provedor deixou exposto publicamente.
+          </p>
+<div class="modal-article">
+<h3>O que o Shodan enxerga</h3>
+<p>
+              Quando um serviço responde na internet, ele pode revelar informações técnicas: porta aberta, protocolo,
+              versão do software, cabeçalhos HTTP, certificado TLS, nome do produto, localização aproximada, provedor,
+              sistema operacional ou mensagem de banner. O Shodan coleta esse tipo de dado e permite consultar o
+              resultado como um inventário pesquisável da superfície pública.
+            </p>
+<p>
+              Isso não significa que todo resultado seja uma vulnerabilidade. Um servidor web, uma VPN ou um painel de
+              administração podem aparecer no Shodan apenas porque estão publicados. O risco nasce quando o serviço está
+              desatualizado, mal configurado, sem autenticação adequada, com credenciais padrão ou exposto sem necessidade.
+            </p>
+<h3>Como ele é usado em segurança</h3>
+<p>
+              Em um trabalho autorizado, o Shodan acelera a fase de reconhecimento. Ele ajuda a localizar ativos que a
+              empresa talvez nem saiba que estão online, identificar tecnologias antigas, descobrir portas incomuns e
+              priorizar aquilo que precisa de validação manual. Para defesa, funciona como uma lente externa: mostra como
+              a organização aparece para qualquer pessoa na internet.
+            </p>
+<dl class="defs">
+<div><dt>Inventário externo</dt><dd>Ajuda a encontrar domínios, IPs e serviços publicados fora do controle esperado.</dd></div>
+<div><dt>Priorização</dt><dd>Permite filtrar tecnologias, portas e banners que merecem revisão antes de uma exploração real.</dd></div>
+<div><dt>Monitoramento</dt><dd>Serve para acompanhar se um ativo novo apareceu exposto depois de mudanças de infraestrutura.</dd></div>
+</dl>
+<h3>Filtros comuns</h3>
+<p>
+              A força do Shodan está nos filtros. Eles permitem transformar uma busca ampla em uma consulta operacional.
+              Alguns exemplos seguros para entendimento:
+            </p>
+<pre class="code-block"><code>org:"Nome da Organizacao"
+ssl.cert.subject.cn:"exemplo.com"
+http.title:"Painel Administrativo"
+port:443 product:"nginx"</code></pre>
+<dl class="defs">
+<div><dt>org</dt><dd>Filtra por organização ou provedor associado ao ativo.</dd></div>
+<div><dt>ssl.cert.subject.cn</dt><dd>Procura nomes presentes no certificado TLS.</dd></div>
+<div><dt>http.title</dt><dd>Busca pelo título HTML retornado por uma aplicação web.</dd></div>
+<div><dt>port / product</dt><dd>Combinam porta e tecnologia para refinar a superfície analisada.</dd></div>
+</dl>
+<h3>O que fazer com os achados</h3>
+<p>
+              O resultado do Shodan deve ser ponto de partida, não conclusão. Depois de encontrar um ativo, o passo
+              correto é confirmar propriedade, validar se o serviço ainda está online, entender se ele deveria estar
+              exposto e documentar risco, impacto e correção. Em ambientes profissionais, cada teste precisa respeitar
+              escopo e autorização.
+            </p>
+<ul>
+<li>Remova da internet painéis administrativos que não precisam ser públicos.</li>
+<li>Restrinja acesso por VPN, allowlist de IP ou controle de identidade forte.</li>
+<li>Atualize serviços que aparecem com versões antigas ou banners detalhados demais.</li>
+<li>Monitore periodicamente novos ativos publicados em nuvem, datacenter e terceiros.</li>
+</ul>
+<h3>Resumo</h3>
+<p>
+              O Shodan é valioso porque mostra exposição real. Ele não substitui um pentest, mas ajuda a descobrir onde
+              olhar primeiro. Usado corretamente, reduz surpresa, melhora inventário e orienta decisões defensivas com
+              base no que está visível do lado de fora.
+            </p>
+</div>
+<a class="button primary compact" href="https://www.shodan.io/" rel="noopener noreferrer" target="_blank">
+            Conhecer o Shodan
+          </a>
+</article>
+</div>
+</dialog>
+<dialog aria-labelledby="post-shodan-title" class="modal modal-reading-dialog" id="post-shodan-modal">
+<div class="modal-panel">
+<button aria-label="Fechar" class="modal-close" data-modal-close="" type="button">Fechar</button>
+<article class="modal-reading">
+<p class="content-type">Artigo no LinkedIn</p>
+<h2 id="post-shodan-title">Shodan e os Riscos de uma Webcam Exposta à Internet</h2>
+<p class="article-meta">Por Fábio Silva Monteiro · LinkedIn · ~8 min de leitura</p>
+<p class="article-lead">
+            Hoje em dia é comum encontrar câmeras conectadas em quase todo lugar — lojas, residências, shoppings e até
+            nas ruas — com o objetivo de monitorar atividades. A maioria é simples de instalar e pode ser acessada
+            pelo celular através de aplicativos, mas, quando mal configuradas, viram um risco de segurança. É sobre
+            esse risco e sobre como o Shodan é usado para encontrar essas câmeras expostas e mal configuradas que
+            trata este artigo.
+          </p>
+<div class="modal-article">
+<h3>O que é o Shodan</h3>
+<p>
+              O Shodan é um motor de busca, parecido com o Google, mas com uma característica única: ele realiza
+              buscas específicas por dispositivos conectados à internet, indo muito além da indexação comum. A
+              ferramenta consegue fornecer informações detalhadas sobre servidores, câmeras de segurança, roteadores
+              e outros dispositivos. Em vez de páginas, o Shodan mapeia e categoriza dispositivos online, dando a
+              qualquer pessoa a capacidade de encontrar informações detalhadas sobre o que está conectado à internet.
+            </p>
+<p>
+              Atualmente ele é uma ferramenta poderosa e importante na fase de reconhecimento do alvo. Ao iniciar um
+              pentest precisamos identificar possíveis vulnerabilidades, e o Shodan faz isso de forma muito direta. A
+              ferramenta ainda possui categorias de busca — sistemas de controle industrial, bancos de dados,
+              infraestrutura de rede e mais — o que agiliza bastante a coleta de dados.
+            </p>
+<h3>Os riscos da exposição da câmera</h3>
+<p>
+              Quando uma câmera IP está mal configurada e exposta na internet, ela pode ser facilmente descoberta e
+              explorada pelo Shodan, e as implicações são preocupantes. Um atacante poderia visualizar a transmissão
+              ao vivo, manipular o dispositivo, roubar dados ou usar a câmera como ponto de entrada para atacar outros
+              sistemas da mesma rede. Além disso, poderia comprometer a privacidade do dono e, em casos extremos, usar
+              as informações coletadas para extorsão ou roubo.
+            </p>
+<h3>Capturando a prévia de uma câmera com o Shodan</h3>
+<p>
+              Com os riscos em mente, uma string simples no Shodan já retorna câmeras expostas que exibem uma imagem
+              de prévia:
+            </p>
+<pre class="code-block"><code>country:"BR" port:"554" has_screenshot:true</code></pre>
+<dl class="defs">
+<div><dt>country:"BR"</dt><dd>Busca dispositivos localizados no Brasil (BR).</dd></div>
+<div><dt>port:"554"</dt><dd>Busca dispositivos com a porta 554 aberta — normalmente o RTSP (Real-Time Streaming Protocol), usado para transmitir vídeo e áudio ao vivo pela internet.</dd></div>
+<div><dt>has_screenshot:true</dt><dd>Limita os resultados a dispositivos que já expõem uma captura de tela.</dd></div>
+</dl>
+<p>
+              Nos resultados originais os IPs foram removidos para não expor ainda mais as câmeras. Com acesso a uma
+              transmissão como essa, um atacante poderia monitorar os horários de entrada e saída do alvo em casa; e,
+              se a página de administração estiver vulnerável, poderia até ajustar o zoom para capturar placas de
+              veículos. As possibilidades são vastas quando o acesso não autorizado é obtido.
+            </p>
+<h3>Lendo o serviço exposto (métodos RTSP)</h3>
+<p>O Shodan também revela os métodos habilitados no dispositivo, por exemplo:</p>
+<pre class="code-block"><code>Public: OPTIONS, DESCRIBE, SETUP</code></pre>
+<p>Isso é perigoso, pois cada método abre um caminho para obter mais informações sobre o dispositivo:</p>
+<dl class="defs">
+<div><dt>OPTIONS</dt><dd>Permite descobrir os métodos suportados.</dd></div>
+<div><dt>DESCRIBE</dt><dd>Retorna informações sobre o recurso de mídia (como parâmetros de streaming).</dd></div>
+<div><dt>SETUP</dt><dd>Configura uma sessão de mídia.</dd></div>
+<div><dt>TEARDOWN</dt><dd>Encerra uma sessão de mídia.</dd></div>
+<div><dt>PLAY</dt><dd>Inicia a reprodução da transmissão de mídia.</dd></div>
+<div><dt>SET_PARAMETER</dt><dd>Permite modificar parâmetros do servidor ou do cliente.</dd></div>
+<div><dt>GET_PARAMETER</dt><dd>Permite obter parâmetros do servidor ou do cliente.</dd></div>
+</dl>
+<h3>Validando os métodos</h3>
+<p>Para verificar se o servidor está no ar e respondendo, o <code>curl</code> confirma um status 200:</p>
+<pre class="code-block"><code>curl -i -X OPTIONS "rtsp://&lt;ip&gt;"</code></pre>
+<dl class="defs">
+<div><dt>curl</dt><dd>Ferramenta de linha de comando para transferir dados de/para um servidor.</dd></div>
+<div><dt>-i</dt><dd>Exibe os cabeçalhos da resposta.</dd></div>
+<div><dt>-X OPTIONS</dt><dd>Solicita o método OPTIONS para descobrir o que é suportado.</dd></div>
+</dl>
+<p>Em seguida, o método <code>DESCRIBE</code> reúne mais informações sobre o alvo:</p>
+<pre class="code-block"><code>echo -e "DESCRIBE rtsp://&lt;target_ip&gt;:&lt;port&gt;/ RTSP/1.0\r\nCSeq: 1\r\n\r\n" | nc &lt;target_ip&gt; &lt;port&gt;</code></pre>
+<dl class="defs">
+<div><dt>echo -e</dt><dd>Monta a string que será enviada; a opção <code>-e</code> interpreta caracteres especiais como <code>\r\n</code>, exigidos pelo formato do protocolo RTSP.</dd></div>
+<div><dt>CSeq: 1</dt><dd>Número de sequência, que controla a ordem das requisições e respostas.</dd></div>
+<div><dt>nc &lt;ip&gt; 554</dt><dd>Usa o Netcat para estabelecer conexão com o dispositivo na porta 554 (RTSP padrão) e enviar a requisição.</dd></div>
+</dl>
+<h3>O que a resposta revela (SDP)</h3>
+<p>
+              A resposta traz bastante informação, incluindo a versão do servidor — aqui um <strong>Hipcam
+              RealServer 1.0</strong>, que indica o software em uso. A parte mais interessante é o Session Description
+              Protocol (SDP), que descreve a sessão de mídia:
+            </p>
+<dl class="defs">
+<div><dt>v= / o= / s= / c= / t=</dt><dd>Versão do SDP, origem e IP do servidor, nome da sessão, rede e tempos da sessão.</dd></div>
+<div><dt>m=video 0 RTP/AVP 96</dt><dd>Uma transmissão de vídeo transportada por RTP.</dd></div>
+<div><dt>a=rtpmap:96 H264/90000</dt><dd>Vídeo codificado em H264 com taxa de amostragem de 90000.</dd></div>
+<div><dt>a=framesize:96 1280-720</dt><dd>Resolução do vídeo de 1280x720.</dd></div>
+<div><dt>m=audio 0 RTP/AVP 8 · a=rtpmap:8 PCMA/8000/1</dt><dd>Uma transmissão de áudio em PCM (codec PCMA, 8000 Hz, um canal).</dd></div>
+</dl>
+<p>
+              Em resumo, o dispositivo expõe uma transmissão de vídeo em H264 a 1280x720 e uma de áudio em PCM — tudo
+              o que um atacante precisa saber para consumir a transmissão.
+            </p>
+<h3>Por que isso é tão perigoso</h3>
+<p>
+              A imagem de capa do artigo original mostra a situação no seu pior cenário: pais instalaram uma câmera
+              para monitorar a casa e os filhos, mas o resultado foi mais uma câmera mal configurada e exposta, que
+              permite que um estranho assista à mesma transmissão. Os riscos vão da vigilância a situações muito mais
+              graves — e é exatamente por isso que proteger esses dispositivos precisa vir em primeiro lugar.
+            </p>
+<h3>A importância da configuração segura</h3>
+<p>
+              Uma das maiores falhas nesses dispositivos é o uso contínuo de credenciais padrão. Muitas câmeras IP são
+              vendidas com usuários e senhas conhecidos, como "admin" e "password"; se não forem trocados, qualquer um
+              que descobrir a câmera pode acessá-la. Muitos dispositivos também deixam portas desnecessárias ou
+              serviços inseguros abertos, e usar protocolos como o RTSP sem proteção deixa a transmissão vulnerável à
+              interceptação.
+            </p>
+<h3>Medidas de proteção</h3>
+<ul>
+<li>Troque as credenciais padrão na configuração inicial — uma senha forte e única é uma barreira simples, porém eficaz.</li>
+<li>Considere usar uma VPN para uma camada extra de segurança: ela criptografa o tráfego entre a câmera e o dispositivo de visualização, dificultando muito a interceptação.</li>
+<li>Verifique quais portas estão abertas e garanta que nenhuma porta desnecessária esteja expondo o serviço de transmissão da câmera.</li>
+<li>Atualize sempre o firmware da câmera quando houver atualizações disponíveis.</li>
+</ul>
+<h3>Conclusão</h3>
+<p>
+              Câmeras expostas são um exemplo claro de como uma pequena falha de configuração vira um risco real. Com
+              uma única string no Shodan um atacante consegue encontrar o dispositivo, ler seus serviços e consumir a
+              transmissão — por isso a correção tem que começar na configuração: credenciais fortes, portas fechadas,
+              criptografia e firmware atualizado. Espero que você tenha aprendido algo novo.
+            </p>
+</div>
+<a class="button primary compact" href="https://pt.linkedin.com/pulse/shodan-e-os-riscos-de-uma-webcam-exposta-%C3%A0-internet-f%C3%A1bio-monteiro-j6kuf" rel="noopener noreferrer" target="_blank">
+            Ler original no LinkedIn
+          </a>
+</article>
+</div>
+</dialog>
+<dialog aria-labelledby="book-pentest-title" class="modal" id="book-pentest-modal">
+<div class="modal-panel">
+<button aria-label="Fechar" class="modal-close" data-modal-close="" type="button">Fechar</button>
+<div class="book-modal-grid">
+<img alt="Capa do livro Introdução ao Pentesting e Cibersegurança" height="522" src="assets/book-pentest-cover.jpg" width="348"/>
+<div class="modal-copy">
+<p class="content-type">Livro</p>
+<h2 id="book-pentest-title">Introdução ao Pentesting e Cibersegurança</h2>
+<p>
+              Fundamentos essenciais para iniciantes em segurança da informação, escrito por Fábio Silva Monteiro.
+              Uma porta de entrada para conceitos de pentest, risco, segurança ofensiva e postura defensiva.
+            </p>
+<ul class="modal-list">
+<li>Autor: Fábio Silva Monteiro.</li>
+<li>Idioma: Português.</li>
+<li>ASIN: B0G3XBQ9QN.</li>
+<li>Formato físico com 230 páginas.</li>
+<li>Publicação: 25 de novembro de 2025.</li>
+<li>Editora: Independently published.</li>
+</ul>
+<a class="button primary compact" href="https://www.amazon.com/dp/B0G3XBQ9QN" rel="noopener noreferrer" target="_blank">
+              Ver na Amazon
+            </a>
+</div>
+</div>
+</div>
+</dialog>
+<!-- Dracul AI Conversational Widget -->
+<div class="dracul-chat-widget" id="dracul-chat-widget">
+<button aria-label="Abrir assistente Dracul AI" class="chat-launcher" id="chat-launcher" type="button">
+<span class="launcher-pulse"></span>
+<span class="launcher-icon">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-4.587-1.112L2 22l1.112-5.413A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2z"></path>
+<path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+</svg>
+</span>
+<span class="launcher-label">Falar com Dracul AI</span>
+</button>
+<div aria-hidden="true" aria-labelledby="chat-title" class="chat-window" id="chat-window" role="dialog">
+<div class="chat-header">
+<div class="chat-header-info">
+<div class="chat-avatar">
+<img alt="" height="24" src="assets/dracul-brand-mark.png" width="24"/>
+<span class="status-dot"></span>
+</div>
+<div>
+<h3 id="chat-title">Dracul AI</h3>
+<span class="chat-status-text">Consultor Red Team · Online</span>
+</div>
+</div>
+<button aria-label="Fechar chat" class="chat-close" id="chat-close" type="button">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18">
+<line x1="18" x2="6" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="6" y2="18"></line>
+</svg>
+</button>
+</div>
+<div aria-live="polite" class="chat-body" id="chat-messages" role="log">
+<div class="chat-message bot">
+<div class="message-content">
+<p>Olá! Sou a <strong>Dracul AI</strong>, consultoria de inteligência ofensiva da Dracul Cybersec.</p>
+<p>Posso te ajudar a entender os riscos do seu ambiente, planejar o escopo ideal para <strong>Pentest</strong> ou <strong>Red Team</strong> e conectar sua demanda diretamente com a equipe técnica da Dracul Cybersec.</p>
+<p>Qual tipo de ativo você gostaria de avaliar hoje?</p>
+</div>
+</div>
+<div class="chat-suggestions" id="chat-suggestions">
+<button class="suggestion-chip" data-prompt="Quais serviços de Pentest a Dracul Cybersec oferece?" type="button">🛡️ Serviços de Pentest</button>
+<button class="suggestion-chip" data-prompt="Como funciona uma operação de Red Team da Dracul Cybersec?" type="button">🎯 Operação Red Team</button>
+<button class="suggestion-chip" data-prompt="Como solicitar uma proposta e qual o escopo necessário?" type="button">📋 Solicitar Proposta</button>
+<button class="suggestion-chip" data-prompt="Qual o diferencial do método ofensivo da Dracul?" type="button">⚡ Por que a Dracul?</button>
+</div>
+</div>
+<form class="chat-input-area" id="chat-form">
+<input autocomplete="off" id="chat-input" maxlength="1000" placeholder="Pergunte sobre pentest, escopo, proposta..." required="" type="text"/>
+<button aria-label="Enviar mensagem" id="chat-send-btn" type="submit">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18">
+<line x1="22" x2="11" y1="2" y2="13"></line>
+<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+</svg>
+</button>
+</form>
+</div>
+</div>
+<footer class="footer">
+<div class="container footer-grid">
+<a aria-label="Dracul Cybersec" class="brand" href="#inicio">
+<img alt="" height="512" src="assets/dracul-brand-mark.png" width="512"/>
+<span><strong>Dracul</strong><small>Cybersec</small></span>
+</a>
+<p>// red team offensive security</p>
+<p>© 2026</p>
+</div>
+</footer>
+<!-- Toast notification popup (Desktop: bottom-left, Mobile: bottom-center) -->
+<div aria-atomic="true" aria-live="polite" class="dracul-toast-container" id="dracul-toast-container"></div>
+<script src="locale.js?v=20261007t"></script>
+<script src="portfolio-locale.js?v=20261007t"></script>
+<script src="script.js?v=20261007t"></script>
+</body>
+</html>
