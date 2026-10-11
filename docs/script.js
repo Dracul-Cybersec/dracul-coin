@@ -664,53 +664,45 @@ contactForm?.addEventListener("submit", async (event) => {
       timestamp
     };
 
-    // AWS Cloud Serverless endpoint (e.g. AWS Lambda Function URL or API Gateway)
-    const awsEndpoint = window.DRACUL_AWS_ENDPOINT || "";
+    // Briefing API Endpoint: Cloudflare Worker route or configured worker URL
+    const targetEndpoint = window.DRACUL_WORKER_ENDPOINT || "/api/briefing";
 
-    if (awsEndpoint) {
-      try {
-        const awsRes = await fetch(awsEndpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(briefingPayload)
-        });
+    try {
+      const response = await fetch(targetEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(briefingPayload)
+      });
 
-        if (awsRes.ok) {
-          const awsData = await awsRes.json().catch(() => ({}));
-          if (awsData.success !== false) {
-            sentSuccess = true;
-          } else {
-            responseErrMsg = awsData.error || "Erro retornado pelo servidor AWS.";
-          }
-        } else {
-          responseErrMsg = `Servidor AWS retornou código ${awsRes.status}.`;
-        }
-      } catch (awsErr) {
-        responseErrMsg = awsErr?.message || "Falha na comunicação com a AWS Cloud.";
+      const result = await response.json().catch(() => ({}));
+
+      if (response.ok && result.success !== false) {
+        sentSuccess = true;
+      } else if (result.error) {
+        responseErrMsg = result.error;
+      } else {
+        responseErrMsg = `Servidor retornou código ${response.status}.`;
       }
-    }
-
-    // Local Apache/PHP backend fallback
-    if (!sentSuccess && !awsEndpoint) {
-      try {
-        const response = await fetch("/api/briefing.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(briefingPayload)
-        });
-
-        if (response.ok) {
-          const result = await response.json().catch(() => ({}));
-          if (result.success) {
+    } catch (netErr) {
+      // Fallback for local Apache server if /api/briefing wasn't routed
+      if (targetEndpoint === "/api/briefing") {
+        try {
+          const fbResponse = await fetch("/api/briefing.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(briefingPayload)
+          });
+          const fbResult = await fbResponse.json().catch(() => ({}));
+          if (fbResponse.ok && fbResult.success) {
             sentSuccess = true;
-          } else if (result.error) {
-            responseErrMsg = result.error;
+          } else if (fbResult.error) {
+            responseErrMsg = fbResult.error;
           }
-        } else {
-          responseErrMsg = `Servidor retornou status ${response.status}.`;
+        } catch {
+          responseErrMsg = netErr?.message || "Falha na comunicação com o servidor.";
         }
-      } catch {
-        sentSuccess = false;
+      } else {
+        responseErrMsg = netErr?.message || "Falha na comunicação com o servidor.";
       }
     }
 
