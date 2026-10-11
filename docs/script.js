@@ -654,6 +654,8 @@ contactForm?.addEventListener("submit", async (event) => {
       if (ipData && ipData.ip) clientIp = ipData.ip;
     } catch {}
 
+    const timestamp = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+
     // Structured briefing payload with metadata
     const briefingPayload = {
       name,
