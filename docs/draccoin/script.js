@@ -46,15 +46,25 @@ document.getElementById('copy').addEventListener('click', async () => {
 })();
 
 (() => {
- const coin = document.querySelector('.hero .coin');
- const image = coin?.querySelector('img');
- if (!image || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
- const flip = () => {
-   requestAnimationFrame(() => {
-     coin.classList.add('coin-entering');
-     coin.addEventListener('animationend', () => coin.classList.remove('coin-entering'), {once:true});
-   });
- };
- if (image.complete && image.naturalWidth) flip();
- else image.addEventListener('load', flip, {once:true});
+  const coin = document.querySelector('.hero .coin');
+  const image = coin?.querySelector('img');
+  if (!coin || !image) return;
+
+  coin.style.cursor = 'pointer';
+  coin.setAttribute('title', 'Clique para girar a moeda');
+
+  const triggerFlip = () => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    coin.classList.remove('coin-entering');
+    void coin.offsetWidth;
+    coin.classList.add('coin-entering');
+  };
+
+  coin.addEventListener('click', triggerFlip);
+  coin.addEventListener('animationend', () => {
+    coin.classList.remove('coin-entering');
+  });
+
+  if (image.complete && image.naturalWidth) triggerFlip();
+  else image.addEventListener('load', triggerFlip, { once: true });
 })();

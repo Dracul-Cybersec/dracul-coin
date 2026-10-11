@@ -48,8 +48,8 @@ body.coin-page .hero h1{font-size:clamp(46px,5.25vw,76px);line-height:1.03;font-
 body.coin-page .hero .lead{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:20px;line-height:1.5;color:#d9d9d9;margin:30px 0 0;max-width:700px}
 body.coin-page .hero .eyebrow{font-size:14px;font-weight:950;letter-spacing:0}
 body.coin-page .hero .button{min-height:58px;padding:12px 34px;font-size:15px;line-height:1.2}
-body.coin-page .coin{width:min(100%,610px,calc(100svh - 168px));aspect-ratio:1;border-radius:50%;overflow:hidden;justify-self:center;margin:0}
-body.coin-page .coin img{width:112.36%;max-width:none;margin:-6.18%;height:auto}
+body.coin-page .coin{width:min(100%,610px,calc(100svh - 168px));aspect-ratio:1;border-radius:50%;overflow:hidden;justify-self:center;margin:0;cursor:pointer}
+body.coin-page .coin img{width:112.36%;max-width:none;margin:-6.18%;height:auto;cursor:pointer;filter:none!important;-webkit-filter:none!important}
 .site-header,body.coin-page .header{display:grid;grid-template-columns:200px minmax(0,1fr) 160px;align-items:center}
 .site-header>.nav,body.coin-page .header>nav{justify-self:center}
 .site-header>.portfolio-language,body.coin-page .header>.language-picker{justify-self:end}

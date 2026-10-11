@@ -234,7 +234,7 @@ const wheelIsExempt = (event, direction) => {
 };
 
 const handleWheelSnap = (event) => {
-  if (!snapTargets.length || event.defaultPrevented || window.innerWidth <= 780) return;
+  if (!snapTargets.length || event.defaultPrevented) return;
 
   if (event.deltaY === 0) return;
 
@@ -642,6 +642,9 @@ contactForm?.addEventListener("submit", async (event) => {
     formStatus.textContent = "Transmitindo briefing com segurança...";
   }
 
+  let sentSuccess = false;
+  let responseErrMsg = "";
+
   try {
     const response = await fetch("/api/briefing", {
       method: "POST",
@@ -650,31 +653,63 @@ contactForm?.addEventListener("submit", async (event) => {
     });
 
     const result = await response.json().catch(() => ({}));
-
     if (response.ok && result.success) {
-      contactForm.reset();
-      resetNameCounter();
-      resetEmailCounter();
-      resetScopeCounter();
-
-      if (formStatus) {
-        formStatus.textContent = "Briefing enviado com sucesso!";
-      }
-
-      // Popup in LinkedIn style: Bottom-left on Desktop, Bottom-center on Mobile
-      showDraculToast({
-        title: "Briefing enviado com sucesso!",
-        message: "Recebemos sua solicitação. Nossa equipe técnica irá avaliar o escopo e retornará o contato em breve com um alinhamento.",
-        type: "success",
-        duration: 6500
-      });
-    } else {
-      throw new Error(result.error || "Não foi possível enviar via servidor.");
+      sentSuccess = true;
+    } else if (result.error) {
+      responseErrMsg = result.error;
     }
-  } catch (err) {
+  } catch {
+    sentSuccess = false;
+  }
+
+  // Fallback: If static host (GitHub Pages) returns 404, transmit directly via FormSubmit AJAX to support@draculcybersec.com
+  if (!sentSuccess) {
+    try {
+      const fbResponse = await fetch("https://formsubmit.co/ajax/support@draculcybersec.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          nome: name,
+          email: email,
+          escopo: scope,
+          origem: "draculcybersec.com",
+          _subject: `[Briefing Dracul Cybersec] ${name} (${email})`,
+          _captcha: "false"
+        })
+      });
+
+      const fbData = await fbResponse.json().catch(() => ({}));
+      if (fbResponse.ok && (fbData.success === "true" || fbData.success === true)) {
+        sentSuccess = true;
+      }
+    } catch {
+      sentSuccess = false;
+    }
+  }
+
+  if (sentSuccess) {
+    contactForm.reset();
+    resetNameCounter();
+    resetEmailCounter();
+    resetScopeCounter();
+
+    if (formStatus) {
+      formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
+    }
+
+    showDraculToast({
+      title: "Briefing enviado com sucesso!",
+      message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
+      type: "success",
+      duration: 7000
+    });
+  } else {
     showDraculToast({
       title: "Falha na transmissão",
-      message: err.message || "Ocorreu uma instabilidade na conexão ao transmitir o briefing. Por favor, tente novamente em instantes.",
+      message: responseErrMsg || "Não foi possível transmitir no momento. Você também pode enviar diretamente para support@draculcybersec.com.",
       type: "error",
       duration: 7000
     });
@@ -825,26 +860,112 @@ contactForm?.addEventListener("submit", async (event) => {
     chatInput.value = "";
     chatInput.disabled = true;
 
+    function generateDraculAIResponse(query, lang) {
+      const q = query.toLowerCase();
+      const isPt = lang === "pt" || !lang || (!["en", "es"].includes(lang) && /[a-záéíóúãõç]/i.test(q));
+      const isEs = lang === "es";
+
+      // DracCoin / Token questions
+      if (q.includes("coin") || q.includes("drac") || q.includes("moeda") || q.includes("token") || q.includes("cripto") || q.includes("crypto") || q.includes("base") || q.includes("uniswap") || q.includes("contrato") || q.includes("contract")) {
+        if (isEs) {
+          return "Dracul Coin (DRAC) es el token oficial del proyecto en la red Base Mainnet (Layer 2 de Ethereum).\n\n• Contrato oficial: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Suministro máximo: 100.000.000 DRAC\n• Par canónico: WETH / DRAC en Uniswap v2 (Base)\n\nPuedes explorar todos los detalles y transacciones en /draccoin/ o en BaseScan.";
+        }
+        if (!isPt) {
+          return "Dracul Coin (DRAC) is an independent digital asset deployed on Base Mainnet (Ethereum Layer 2).\n\n• Contract address: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Maximum supply: 100,000,000 DRAC (18 decimals)\n• Canonical market: WETH / DRAC on Uniswap v2 (Base)\n\nYou can review full token metrics, allocations, and live BaseScan links at /draccoin/.";
+        }
+        return "Dracul Coin (DRAC) é o token do projeto emitido na rede Base Mainnet (Layer 2 da Ethereum).\n\n• Endereço do Contrato: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Supply máximo: 100.000.000 DRAC (18 decimais)\n• Mercado canônico: WETH / DRAC na Uniswap v2 na Base\n\nVocê pode consultar todos os detalhes técnicos, transparência on-chain e links do BaseScan acessando a página /draccoin/.";
+      }
+
+      // Services, Pentest, Red Team, Security Audit
+      if (q.includes("pentest") || q.includes("serviç") || q.includes("service") || q.includes("red team") || q.includes("purple team") || q.includes("nuvem") || q.includes("cloud") || q.includes("api") || q.includes("active directory") || q.includes("vulnerab") || q.includes("auditoria") || q.includes("preço") || q.includes("orçamento") || q.includes("custo") || q.includes("price") || q.includes("cost") || q.includes("quote")) {
+        if (isEs) {
+          return "Dracul Cybersec se especializa en operaciones ofensivas de alta fidelidad con validación práctica y cero falsos positivos:\n\n1. Pentest Web, Mobile & APIs: Identificación y explotación técnica de fallas críticas.\n2. Operaciones de Red Team: Simulación de adversarios reales contra perímetros y sistemas internos.\n3. Seguridad en la Nube & Active Directory: Mapeo de rutas de escalada de privilegios en AWS, Azure, GCP y dominios híbridos.\n4. Purple Team: Calibración coordinada de alertas de detección SIEM/EDR.\n\nPara solicitar una cotización o alcance técnico, completa el formulario de briefing al final de la página o escribe a support@draculcybersec.com.";
+        }
+        if (!isPt) {
+          return "Dracul Cybersec provides high-fidelity offensive security operations focused on proof-of-concept evidence with zero false positives:\n\n1. Web, Mobile & API Pentesting: Discovery and exploitation of logic flaws and deep vulnerabilities.\n2. Red Team Operations: Real-world adversary simulations testing perimeter defense and SOC response.\n3. Cloud & Active Directory Security: Privilege escalation mapping across AWS, Azure, GCP, and enterprise identity.\n4. Purple Team Exercises: Collaborative offensive-defensive tuning of SIEM/EDR detections.\n\nTo request a project assessment or pricing, submit your scope using the briefing form below or reach out directly to support@draculcybersec.com.";
+        }
+        return "A Dracul Cybersec realiza operações ofensivas com foco em evidência técnica reproduzível e zero falsos positivos:\n\n1. Pentest Web, Mobile & APIs: Exploração prática de falhas críticas de autenticação, injeção e lógica de negócio.\n2. Operações de Red Team: Simulações de adversários reais para avaliar a resiliência dos seus controles e detecção de incidentes.\n3. Active Directory & Nuvem: Mapeamento de caminhos de escalação de privilégios em AD, AWS, Azure e GCP.\n4. Exercício de Purple Team: Atuação conjunta com a defesa para calibrar regras e alertas de SIEM/EDR.\n\nPara receber uma proposta ou agendar um alinhamento confidencial, preencha o formulário de briefing logo abaixo ou envie para support@draculcybersec.com.";
+      }
+
+      // Book / Fabio / Author
+      if (q.includes("livro") || q.includes("book") || q.includes("autor") || q.includes("author") || q.includes("fábio") || q.includes("fabio") || q.includes("amazon")) {
+        if (isEs) {
+          return "El libro 'Introducción al Pentesting y Ciberseguridad' fue escrito por Fábio Silva Monteiro (fundador de Dracul Cybersec).\n\n• Formato: 230 páginas\n• Enfoque: Fundamentos prácticos de seguridad ofensiva, pruebas de penetración y conceptos esenciales para profesionales.\n• Disponible internacionalmente en Amazon (ASIN: B0G3XBQ9QN).";
+        }
+        if (!isPt) {
+          return "The book 'Introdução ao Pentesting e Cibersegurança' was authored by Fábio Silva Monteiro (founder of Dracul Cybersec).\n\n• Length: 230 pages\n• Focus: Essential foundations for offensive security, penetration testing methodologies, and defensive mindset.\n• Available on Amazon (ASIN: B0G3XBQ9QN).";
+        }
+        return "O livro 'Introdução ao Pentesting e Cibersegurança' é de autoria de Fábio Silva Monteiro, fundador da Dracul Cybersec.\n\n• Formato físico com 230 páginas.\n• Conteúdo: Fundamentos essenciais de segurança da informação, metodologia de pentest, análise de risco e mentalidade ofensiva/defensiva.\n• Disponível na Amazon (ASIN: B0G3XBQ9QN).";
+      }
+
+      // Shodan / Cameras / RTSP
+      if (q.includes("shodan") || q.includes("camera") || q.includes("câmera") || q.includes("rtsp") || q.includes("webcam") || q.includes("iot")) {
+        if (isEs) {
+          return "El Shodan es un motor de búsqueda de dispositivos conectados (banners, puertos, certificados). El artículo publicado por Fábio Silva Monteiro demuestra los riesgos de cámaras IP y puertos RTSP (554) expuestos sin autenticación, y cómo la configuración inicial y el uso de VPNs previenen accesos no autorizados.";
+        }
+        if (!isPt) {
+          return "Shodan is an internet scanner and search engine for connected services and banners. Our published technical guide explains how exposed RTSP streaming ports (554) and default credentials expose surveillance feeds, emphasizing network isolation, strong passwords, and firmware hardening.";
+        }
+        return "O Shodan é um motor de busca para ativos conectados à internet (banners, portas abertas, serviços e certificados). Em nosso artigo técnico, demonstramos como portas RTSP (554) e câmeras com credenciais padrão podem ser descobertas e acessadas, ressaltando a urgência de senhas fortes, isolamento por VPN e fechamento de portas desnecessárias.";
+      }
+
+      // Greetings
+      if (q.match(/^(oi|olá|ola|bom dia|boa tarde|boa noite|hello|hi|hey|hola|saludos|buenos dias|buenas)/i)) {
+        if (isEs) {
+          return "¡Hola! Soy Dracul AI, el asistente técnico de Dracul Cybersec. ¿En qué puedo orientarte hoy? Puedo explicarte nuestros servicios de Pentest y Red Team, detalles sobre el token Dracul Coin (DRAC) o ayudarte a enviar un briefing confidencial.";
+        }
+        if (!isPt) {
+          return "Hello! I am Dracul AI, the technical assistant for Dracul Cybersec. How can I help you today? Feel free to ask about our Pentest & Red Team services, Dracul Coin (DRAC) details, or submitting a technical briefing.";
+        }
+        return "Olá! Sou o Dracul AI, assistente técnico da Dracul Cybersec. Como posso te apoiar hoje? Posso esclarecer dúvidas sobre nossos serviços de Pentest e Red Team, sobre o token Dracul Coin (DRAC), nosso livro técnico ou ajudar você a enviar um escopo confidencial.";
+      }
+
+      // Default response
+      if (isEs) {
+        return "Entendido. En Dracul Cybersec ayudamos a identificar brechas reales antes de que se conviertan en incidentes. Si deseas evaluar la seguridad de tus aplicaciones, nube o perímetro, puedes describir tu alcance en el formulario de briefing abajo o escribir a support@draculcybersec.com.";
+      }
+      if (!isPt) {
+        return "Understood. At Dracul Cybersec, we uncover real vulnerabilities before they turn into security incidents. If you would like to evaluate your web, cloud, or identity attack surface, submit your project scope using the briefing form below or email support@draculcybersec.com.";
+      }
+      return "Compreendido! Na Dracul Cybersec, atuamos para identificar e neutralizar vulnerabilidades reais antes que se transformem em incidentes de segurança. Se você deseja avaliar a resiliência das suas aplicações, APIs, nuvem ou perímetro, preencha o formulário de briefing logo abaixo ou envie seu escopo para support@draculcybersec.com.";
+    }
+
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: text,
-          language: window.DraculLocale?.language || "en",
-          history: chatHistory.slice(-6)
-        })
-      });
+      let reply = "";
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: text,
+            language: window.DraculLocale?.language || "pt",
+            history: chatHistory.slice(-6)
+          })
+        });
 
-      const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          const data = await res.json().catch(() => ({}));
+          if (data && data.reply) {
+            reply = data.reply;
+          }
+        }
+      } catch {
+        reply = "";
+      }
+
+      if (!reply) {
+        // Fallback to local intelligence model
+        reply = generateDraculAIResponse(text, window.DraculLocale?.language || "pt");
+      }
+
       indicator.remove();
-
-      const reply = data.reply || "Agradeço a mensagem! Estamos prontos para avaliar a segurança do seu ambiente. Por favor, detalhe seu escopo no formulário de briefing logo abaixo para que nossa equipe técnica avalie e retorne o contato.";
       appendMessage("bot", reply);
       chatHistory.push({ role: "model", text: reply });
     } catch (e) {
       indicator.remove();
-      appendMessage("bot", "Estou com instabilidade temporária na conexão, mas você pode enviar seu escopo diretamente pelo formulário de briefing logo abaixo para que nossa equipe técnica avalie.");
+      const fallbackReply = generateDraculAIResponse(text, window.DraculLocale?.language || "pt");
+      appendMessage("bot", fallbackReply);
+      chatHistory.push({ role: "model", text: fallbackReply });
     } finally {
       chatInput.disabled = false;
       chatInput.focus();
@@ -863,7 +984,6 @@ contactForm?.addEventListener("submit", async (event) => {
     }
   });
 })();
-
 
 syncHeader();
 syncActiveNav();

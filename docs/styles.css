@@ -50,11 +50,10 @@ body {
   padding-top: calc(var(--header-height) + var(--section-frame-gap));
   background:
     radial-gradient(circle at 78% 18%, rgba(239, 32, 32, 0.12), transparent 30rem),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     var(--black);
-  background-size: auto, 88px 88px, 88px 88px, auto;
-  background-attachment: fixed;
+  background-size: auto, 88px 88px, 88px 88px;
   color: var(--ink);
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -301,11 +300,22 @@ section {
   min-height: calc(100svh - var(--header-height) - var(--section-frame-gap));
   overflow: hidden;
   background:
-    radial-gradient(circle at 72% 44%, rgba(239, 32, 32, 0.2), transparent 25rem);
+    radial-gradient(circle at 72% 44%, rgba(239, 32, 32, 0.2), transparent 25rem),
+    linear-gradient(115deg, rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.86) 54%, rgba(239, 32, 32, 0.13)),
+    var(--black);
 }
 
 .hero::before {
-  display: none;
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, transparent 0 44px, rgba(255, 255, 255, 0.035) 45px, transparent 46px),
+    linear-gradient(transparent 0 44px, rgba(255, 255, 255, 0.035) 45px, transparent 46px);
+  background-size: 90px 90px;
+  mask-image: linear-gradient(90deg, transparent, #000 28%, #000 92%, transparent);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .hero-bg-word {
@@ -496,7 +506,7 @@ h3 {
 .contact-section {
   position: relative;
   padding: 106px 0;
-  background: transparent;
+  background: var(--black);
 }
 
 .about-section {
@@ -997,14 +1007,20 @@ h3 {
 }
 
 .modal {
-  width: min(1100px, calc(100% - 34px));
-  max-height: min(86vh, 900px);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(1000px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  max-height: min(88vh, 880px);
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   overscroll-behavior: contain;
   border: 1px solid var(--line-red);
-  background: transparent;
+  border-radius: 8px;
+  background: #090909;
   color: var(--ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(239, 32, 32, 0.15);
 }
 
 .modal::backdrop {
@@ -1014,10 +1030,13 @@ h3 {
 
 .modal-panel {
   position: relative;
-  max-height: min(86vh, 900px);
-  overflow: auto;
+  max-height: min(88vh, 880px);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   padding: 34px;
+  box-sizing: border-box;
   background:
     linear-gradient(135deg, rgba(239, 32, 32, 0.14), transparent 38%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -1069,7 +1088,10 @@ h3 {
 
 .book-modal-grid > img {
   width: min(100%, 330px);
+  max-height: min(65vh, 480px);
+  object-fit: contain;
   border: 1px solid rgba(125, 255, 184, 0.28);
+  border-radius: 4px;
   box-shadow: 0 24px 54px rgba(0, 0, 0, 0.48);
 }
 
@@ -1149,7 +1171,8 @@ h3 {
 }
 
 .modal.modal-reading-dialog {
-  width: min(880px, calc(100% - 34px));
+  width: min(880px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
 }
 
 .modal-reading {
@@ -1684,7 +1707,7 @@ h3 {
   align-items: center;
   padding: 96px 0;
   border-block: 1px solid rgba(239, 32, 32, 0.18);
-  background: linear-gradient(115deg, rgba(239, 32, 32, 0.13), transparent 42%), radial-gradient(circle at 82% 50%, rgba(239, 32, 32, 0.11), transparent 26rem), transparent;
+  background: linear-gradient(115deg, rgba(239, 32, 32, 0.13), transparent 42%), radial-gradient(circle at 82% 50%, rgba(239, 32, 32, 0.11), transparent 26rem), #080808;
 }
 
 .academy-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: clamp(44px, 7vw, 100px); }
@@ -2197,13 +2220,19 @@ h3 {
   .academy-console { min-height: 470px; }
 
   .modal {
-    width: calc(100% - 24px);
-    max-height: 88vh;
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
+    max-height: 90vh;
   }
 
   .modal-panel {
-    max-height: 88vh;
-    padding: 20px;
+    max-height: 90vh;
+    padding: 24px 18px;
+  }
+
+  .modal.modal-reading-dialog {
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
   }
 
   .modal-grid,
@@ -2211,8 +2240,14 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .book-modal-grid {
+    justify-items: center;
+  }
+
   .book-modal-grid > img {
     width: min(100%, 240px);
+    max-height: 45vh;
+    object-fit: contain;
   }
 
   .profile-photo-wrap {
