@@ -43,27 +43,20 @@ body.coin-page .button,body.coin-page button:not(.nav-toggle){font-family:ui-mon
 /* Keep the opening sections at the same scale and the header geometry stable. */
 html{scrollbar-gutter:stable}
 body.coin-page{--header-height:76px}
-body.coin-page .hero>.section-content{grid-template-columns:minmax(0,.92fr) minmax(420px,.88fr);gap:42px}
-body.coin-page .hero h1{font-size:clamp(46px,5.25vw,76px);line-height:1.03;font-weight:950;margin:0 0 26px}
-body.coin-page .hero .lead{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:20px;line-height:1.5;color:#d9d9d9;margin:30px 0 0;max-width:700px}
-body.coin-page .hero .eyebrow{font-size:14px;font-weight:950;letter-spacing:0}
-body.coin-page .hero .button{min-height:58px;padding:12px 34px;font-size:15px;line-height:1.2}
-body.coin-page .coin{width:min(100%,610px,calc(100svh - 168px));aspect-ratio:1;border-radius:50%;overflow:hidden;justify-self:center;margin:0;cursor:pointer}
-body.coin-page .coin img{width:112.36%;max-width:none;margin:-6.18%;height:auto;cursor:pointer;filter:none!important;-webkit-filter:none!important}
-.site-header,body.coin-page .header{display:grid;grid-template-columns:200px minmax(0,1fr) 160px;align-items:center}
-.site-header>.nav,body.coin-page .header>nav{justify-self:center}
-.site-header>.portfolio-language,body.coin-page .header>.language-picker{justify-self:end}
-@media(max-width:1120px){.site-header,body.coin-page .header{grid-template-columns:170px minmax(0,1fr) 115px}}
+body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+body.coin-page .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(36px,4vw,58px);font-weight:950;line-height:1.1;letter-spacing:0;margin:18px 0 26px}
+body.coin-page .hero .lead{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace;font-size:18px;line-height:1.7;color:var(--muted);margin:0;max-width:700px}
+body.coin-page .hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--red);line-height:1.5;margin:0 0 22px}
+body.coin-page .hero .button{min-height:52px;padding:12px 28px;font-size:15px;line-height:1.2}
+body.coin-page .coin{width:100%;max-width:none;margin:0;cursor:pointer}
+body.coin-page .coin img{width:100%;max-width:100%;height:auto;margin:0;clip-path:circle(44.5% at 50% 50%);filter:none!important;-webkit-filter:none!important;cursor:pointer}
 @media(max-width:780px){
  body.coin-page{--header-height:70px}
- .site-header,body.coin-page .header{display:flex}
  body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1fr);gap:20px}
  body.coin-page .hero h1{font-size:38px}
  body.coin-page .hero .eyebrow{font-size:12px}
  body.coin-page .coin{width:min(320px,100%);margin-inline:auto}
 }
-html[data-locale-initializing] header nav{visibility:hidden}
-@media(min-width:781px) and (max-width:1120px){.site-header,body.coin-page .header{grid-template-columns:150px minmax(0,1fr) 105px;gap:12px}.site-header>.nav,body.coin-page .header>nav{gap:12px}}
 @media(max-width:460px){body.coin-page .hero .lead{font-size:18px}}
 @media(max-width:780px){body.coin-page .hero .lead{font-size:18px}}
 @media(min-width:461px) and (max-width:780px){body.coin-page .hero h1{font-size:clamp(46px,5.25vw,76px)}body.coin-page h2{font-size:clamp(34px,4vw,56px)}}
@@ -89,7 +82,6 @@ body.coin-page .language-picker select{font:inherit;line-height:1.5;padding:7px;
 @media(min-width:1101px){body.coin-page .language-picker>span{display:inline}}
 @media(max-width:1100px){body.coin-page .language-picker>span{display:none}}
 @media(max-width:780px){body.coin-page .header>.language-picker{margin-left:auto;margin-right:12px}.language-picker select{max-width:104px}}
-@media(min-width:1101px) and (max-width:1120px){.site-header,body.coin-page .header{grid-template-columns:150px minmax(0,1fr) 160px}}
 .portfolio-language>span,body.coin-page .language-picker>span{white-space:nowrap;flex-shrink:0}
 /* Mobile sections flow with the content instead of trapping it in a desktop frame. */
 @media(max-width:780px){

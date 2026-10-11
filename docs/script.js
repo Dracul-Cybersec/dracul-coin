@@ -646,70 +646,79 @@ contactForm?.addEventListener("submit", async (event) => {
   let responseErrMsg = "";
 
   try {
-    const response = await fetch("/api/briefing", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, scope })
-    });
-
-    const result = await response.json().catch(() => ({}));
-    if (response.ok && result.success) {
-      sentSuccess = true;
-    } else if (result.error) {
-      responseErrMsg = result.error;
-    }
-  } catch {
-    sentSuccess = false;
-  }
-
-  // Fallback: If static host (GitHub Pages) returns 404, transmit directly via FormSubmit AJAX to support@draculcybersec.com
-  if (!sentSuccess) {
     try {
-      const fbResponse = await fetch("https://formsubmit.co/ajax/support@draculcybersec.com", {
+      const response = await fetch("/api/briefing", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          nome: name,
-          email: email,
-          escopo: scope,
-          origem: "draculcybersec.com",
-          _subject: `[Briefing Dracul Cybersec] ${name} (${email})`,
-          _captcha: "false"
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, scope })
       });
 
-      const fbData = await fbResponse.json().catch(() => ({}));
-      if (fbResponse.ok && (fbData.success === "true" || fbData.success === true)) {
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result.success) {
         sentSuccess = true;
+      } else if (result.error) {
+        responseErrMsg = result.error;
       }
     } catch {
       sentSuccess = false;
     }
-  }
 
-  if (sentSuccess) {
-    contactForm.reset();
-    resetNameCounter();
-    resetEmailCounter();
-    resetScopeCounter();
+    // Fallback: If static host (GitHub Pages) returns 404, transmit directly via FormSubmit AJAX to support@draculcybersec.com
+    if (!sentSuccess) {
+      try {
+        const fbResponse = await fetch("https://formsubmit.co/ajax/support@draculcybersec.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            nome: name,
+            email: email,
+            escopo: scope,
+            origem: "draculcybersec.com",
+            _subject: `[Briefing Dracul Cybersec] ${name} (${email})`,
+            _captcha: "false"
+          })
+        });
 
-    if (formStatus) {
-      formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
+        const fbData = await fbResponse.json().catch(() => ({}));
+        if (fbResponse.ok && (fbData.success === "true" || fbData.success === true)) {
+          sentSuccess = true;
+        }
+      } catch {
+        sentSuccess = false;
+      }
     }
 
-    showDraculToast({
-      title: "Briefing enviado com sucesso!",
-      message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
-      type: "success",
-      duration: 7000
-    });
-  } else {
+    if (sentSuccess) {
+      contactForm.reset();
+      resetNameCounter();
+      resetEmailCounter();
+      resetScopeCounter();
+
+      if (formStatus) {
+        formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
+      }
+
+      showDraculToast({
+        title: "Briefing enviado com sucesso!",
+        message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
+        type: "success",
+        duration: 7000
+      });
+    } else {
+      showDraculToast({
+        title: "Falha na transmissão",
+        message: responseErrMsg || "Não foi possível transmitir no momento. Você também pode enviar diretamente para support@draculcybersec.com.",
+        type: "error",
+        duration: 7000
+      });
+    }
+  } catch (err) {
     showDraculToast({
       title: "Falha na transmissão",
-      message: responseErrMsg || "Não foi possível transmitir no momento. Você também pode enviar diretamente para support@draculcybersec.com.",
+      message: err.message || "Ocorreu uma instabilidade na conexão ao transmitir o briefing.",
       type: "error",
       duration: 7000
     });

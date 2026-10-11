@@ -54,6 +54,7 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     var(--black);
   background-size: auto, 88px 88px, 88px 88px;
+  background-attachment: fixed;
   color: var(--ink);
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -300,22 +301,11 @@ section {
   min-height: calc(100svh - var(--header-height) - var(--section-frame-gap));
   overflow: hidden;
   background:
-    radial-gradient(circle at 72% 44%, rgba(239, 32, 32, 0.2), transparent 25rem),
-    linear-gradient(115deg, rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.86) 54%, rgba(239, 32, 32, 0.13)),
-    var(--black);
+    radial-gradient(circle at 72% 44%, rgba(239, 32, 32, 0.2), transparent 25rem);
 }
 
 .hero::before {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background:
-    linear-gradient(90deg, transparent 0 44px, rgba(255, 255, 255, 0.035) 45px, transparent 46px),
-    linear-gradient(transparent 0 44px, rgba(255, 255, 255, 0.035) 45px, transparent 46px);
-  background-size: 90px 90px;
-  mask-image: linear-gradient(90deg, transparent, #000 28%, #000 92%, transparent);
-  opacity: 0.8;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-bg-word {
@@ -506,7 +496,7 @@ h3 {
 .contact-section {
   position: relative;
   padding: 106px 0;
-  background: var(--black);
+  background: transparent;
 }
 
 .about-section {
@@ -821,9 +811,7 @@ h3 {
 }
 
 .content-section {
-  background:
-    linear-gradient(180deg, #0a0a0a, #070707),
-    var(--black);
+  background: transparent;
 }
 
 .content-grid {
@@ -835,31 +823,35 @@ h3 {
 
 .content-card {
   display: grid;
-  align-content: start;
+  grid-template-rows: auto 1fr;
+  align-content: stretch;
   overflow: hidden;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.018);
 }
 
 .content-card > img,
+.content-preview,
 .content-preview > img,
 .content-media {
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 7.4;
   object-fit: cover;
   border-bottom: 1px solid var(--line);
+  box-sizing: border-box;
 }
 
 .content-preview {
   position: relative;
-  width: 100%;
+  display: block;
   overflow: hidden;
   padding: 0;
   border: 0;
+  border-bottom: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
   color: inherit;
+  cursor: pointer;
 }
 
 .content-preview img {
@@ -881,6 +873,8 @@ h3 {
   display: grid;
   place-items: center;
   aspect-ratio: 16 / 7.4;
+  border-bottom: 1px solid var(--line);
+  box-sizing: border-box;
   background:
     radial-gradient(circle at 50% 20%, rgba(77, 212, 146, 0.15), transparent 18rem),
     #061318;
@@ -931,9 +925,11 @@ h3 {
 }
 
 .content-card > div:not(.content-media) {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .content-type {
@@ -961,7 +957,8 @@ h3 {
 .content-action {
   display: inline-flex;
   width: fit-content;
-  margin-top: 18px;
+  margin-top: auto;
+  padding-top: 18px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1384,8 +1381,7 @@ h3 {
   min-height: calc(100svh - var(--header-height) - var(--section-frame-gap) - var(--footer-height));
   padding: 44px 0;
   background:
-    radial-gradient(circle at 12% 20%, rgba(239, 32, 32, 0.16), transparent 24rem),
-    #080808;
+    radial-gradient(circle at 12% 20%, rgba(239, 32, 32, 0.16), transparent 24rem);
 }
 
 .contact-grid p {

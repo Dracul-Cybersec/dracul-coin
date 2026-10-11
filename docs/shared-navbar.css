@@ -1,38 +1,277 @@
-/* One navbar component, used by the portfolio and Dracul Coin. */
-:is(.site-header,body.coin-page .header){position:fixed;inset:0 0 auto;z-index:50;display:grid;grid-template-columns:200px minmax(0,1fr) 160px;align-items:center;gap:24px;width:auto;max-width:none;height:76px;min-height:76px;margin:0;padding:0 70px;border-bottom:1px solid rgba(239,32,32,.08);background:rgba(10,10,10,.9);backdrop-filter:blur(18px);box-shadow:none}
-:is(.site-header,body.coin-page .header).is-scrolled{background:rgba(10,10,10,.98);border-bottom-color:rgba(239,32,32,.18);box-shadow:0 14px 32px rgba(0,0,0,.34)}
-:is(.site-header,body.coin-page .header) .brand{display:inline-flex;align-items:center;gap:12px;margin:0;text-decoration:none}
-:is(.site-header,body.coin-page .header) .brand img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(239,32,32,.42))}
-:is(.site-header,body.coin-page .header) .brand strong{display:block;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:18px;line-height:1;font-weight:950;color:#fff}
-:is(.site-header,body.coin-page .header) .brand small{display:block;margin-top:4px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace;font-size:11px;line-height:1;font-weight:950;color:#ef2020;text-transform:uppercase}
-:is(.site-header,body.coin-page .header)>:is(.nav,nav){display:flex;position:static;align-items:center;justify-content:center;justify-self:center;gap:30px;flex-wrap:nowrap;margin:0;padding:0}
-:is(.site-header,body.coin-page .header) :is(.nav,nav) a{display:inline-flex;position:relative;align-items:center;justify-content:center;min-height:20px;margin:0;padding:0;color:#e9e9e9;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace;font-size:14px;line-height:20px;font-weight:800;text-decoration:none;white-space:nowrap}
-:is(.site-header,body.coin-page .header) :is(.nav,nav) a::after{position:absolute;left:0;right:0;bottom:-10px;height:2px;background:#ef2020;content:'';opacity:0;transform:scaleX(.45);transform-origin:center;transition:opacity 180ms ease,transform 180ms ease}
-:is(.site-header,body.coin-page .header) :is(.nav,nav) a:is(:hover,:focus-visible,.is-active){color:#ef2020}
-:is(.site-header,body.coin-page .header) :is(.nav,nav) a:is(:hover,:focus-visible,.is-active)::after{opacity:1;transform:scaleX(1)}
-:is(.site-header,body.coin-page .header)>:is(.portfolio-language,.language-picker){display:flex;align-items:center;justify-self:end;gap:8px;flex-shrink:0;margin:0;font-size:12px;line-height:1.5;color:#b9b9b9}
-:is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker)>span{display:inline;flex-shrink:0;white-space:nowrap}
-:is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker) select{font:inherit;line-height:1.5;color:#f5f5f5;background:#101010;border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:7px;max-width:115px}
-@media(max-width:1120px){:is(.site-header,body.coin-page .header){padding-inline:32px;grid-template-columns:150px minmax(0,1fr) 160px;gap:12px}:is(.site-header,body.coin-page .header)>:is(.nav,nav){gap:12px}}
-@media(max-width:1100px){:is(.site-header,body.coin-page .header){grid-template-columns:150px minmax(0,1fr) 105px}:is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker)>span{display:none}}
-@media(max-width:780px){
- :is(.site-header,body.coin-page .header){display:flex;height:70px;min-height:70px;padding:0 16px;gap:12px}
- :is(.site-header,body.coin-page .header) .brand img{width:46px;height:46px}
- :is(.site-header,body.coin-page .header) .brand small{font-size:10px}
- :is(.site-header,body.coin-page .header)>:is(.portfolio-language,.language-picker){margin-left:auto;margin-right:12px}
- :is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker) select{max-width:104px}
- :is(.site-header,body.coin-page .header)>:is(.nav,nav){display:none;position:fixed;top:70px;left:0;right:0;width:100%;height:calc(100dvh - 70px);background:#0a0a0a;flex-direction:column;justify-content:center;gap:28px;overflow-y:auto;padding:24px}
- :is(.site-header,body.coin-page .header)>:is(.nav,nav).is-open{display:flex}
- :is(.site-header,body.coin-page .header) :is(.nav,nav) a{font-size:22px;line-height:1.5}
- :is(.site-header,body.coin-page .header) .nav-toggle{order:3}
+/* Unified navbar component: exactly identical to the portfolio site-header */
+:root {
+  --header-height: 76px;
 }
-@media(max-width:460px){:is(.site-header,body.coin-page .header) .brand{gap:8px}:is(.site-header,body.coin-page .header) .brand strong{font-size:16px}}
-@media(prefers-reduced-motion:reduce){:is(.site-header,body.coin-page .header) :is(.nav,nav) a::after{transition:none}}
-/* Reveal the complete header only after its initial language is applied. */
-html[data-locale-initializing] [data-header]{visibility:hidden}
-:is(.site-header,body.coin-page .header){box-sizing:border-box;contain:layout;transition:background-color 180ms ease,box-shadow 180ms ease,border-color 180ms ease}
-:is(.site-header,body.coin-page .header)>:is(.portfolio-language,.language-picker){width:152px;justify-content:flex-end}
-:is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker) select{width:104px;min-width:104px;max-width:104px}
-@media(max-width:1100px){:is(.site-header,body.coin-page .header)>:is(.portfolio-language,.language-picker){width:104px}}
-@media(min-width:1101px){:is(.site-header,body.coin-page .header){grid-template-columns:200px minmax(0,1fr) 176px}:is(.site-header,body.coin-page .header)>:is(.portfolio-language,.language-picker){width:176px}:is(.site-header,body.coin-page .header) :is(.portfolio-language,.language-picker)>span{width:64px;text-align:right}}
-@media(min-width:1101px) and (max-width:1120px){:is(.site-header,body.coin-page .header){grid-template-columns:150px minmax(0,1fr) 176px}}
+@media (max-width: 780px) {
+  :root {
+    --header-height: 70px;
+  }
+}
+
+:is(.site-header, body.coin-page .header) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  height: var(--header-height);
+  min-height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 70px;
+  border-bottom: 1px solid rgba(239, 32, 32, 0.08);
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: none;
+  box-sizing: border-box;
+  contain: layout;
+  transition: background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+:is(.site-header, body.coin-page .header).is-scrolled {
+  border-bottom-color: rgba(239, 32, 32, 0.18);
+  background: rgba(10, 10, 10, 0.98);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+}
+
+:is(.site-header, body.coin-page .header) .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+:is(.site-header, body.coin-page .header) .brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(239, 32, 32, 0.42));
+}
+
+:is(.site-header, body.coin-page .header) .brand strong,
+:is(.site-header, body.coin-page .header) .brand small {
+  display: block;
+  line-height: 1;
+}
+
+:is(.site-header, body.coin-page .header) .brand strong {
+  color: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+:is(.site-header, body.coin-page .header) .brand small {
+  margin-top: 4px;
+  color: #ef2020;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+:is(.site-header, body.coin-page .header) :is(.nav, nav) {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+:is(.site-header, body.coin-page .header) .nav-links-list {
+  display: contents;
+}
+
+:is(.site-header, body.coin-page .header) :is(.nav, nav) a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+  color: #e9e9e9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+:is(.site-header, body.coin-page .header) :is(.nav, nav) a::after {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 0;
+  height: 2px;
+  background: #ef2020;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.45);
+  transform-origin: center;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+:is(.site-header, body.coin-page .header) :is(.nav, nav) a:is(:hover, :focus-visible, .is-active) {
+  color: #ef2020;
+  outline: none;
+}
+
+:is(.site-header, body.coin-page .header) :is(.nav, nav) a:is(:hover, :focus-visible, .is-active)::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+:is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #b9b9b9;
+}
+
+:is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) > span {
+  display: inline;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+:is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) select {
+  font: inherit;
+  background: #101010;
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  padding: 7px;
+  max-width: 115px;
+  cursor: pointer;
+}
+
+:is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) select:focus-visible {
+  outline: 2px solid #ef2020;
+  outline-offset: 3px;
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  border-radius: 8px;
+  background: rgba(18, 18, 24, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle:hover {
+  border-color: #e50914;
+  background: rgba(229, 9, 20, 0.15);
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle span:not(.sr-only) {
+  width: 20px;
+  height: 2px;
+  background: #ff3333;
+  border-radius: 2px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle[aria-expanded="true"] span:not(.sr-only):nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle[aria-expanded="true"] span:not(.sr-only):nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+:is(.site-header, body.coin-page .header) .nav-toggle[aria-expanded="true"] span:not(.sr-only):nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 1120px) {
+  :is(.site-header, body.coin-page .header) {
+    padding-inline: 32px;
+  }
+}
+
+@media (max-width: 1100px) {
+  :is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) > span {
+    display: none;
+  }
+  :is(.site-header, body.coin-page .header) {
+    gap: 12px;
+  }
+  :is(.site-header, body.coin-page .header) :is(.nav, nav) {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 780px) {
+  :is(.site-header, body.coin-page .header) {
+    height: 70px;
+    min-height: 70px;
+    padding-inline: 16px;
+    gap: 12px;
+  }
+  :is(.site-header, body.coin-page .header) .brand img {
+    width: 46px;
+    height: 46px;
+  }
+  :is(.site-header, body.coin-page .header) .brand small {
+    font-size: 10px;
+  }
+  :is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) {
+    margin-left: auto;
+    margin-right: 12px;
+  }
+  :is(.site-header, body.coin-page .header) :is(.portfolio-language, .language-picker) select {
+    max-width: 104px;
+  }
+  :is(.site-header, body.coin-page .header) .nav-toggle {
+    display: flex;
+    order: 3;
+  }
+  :is(.site-header, body.coin-page .header) :is(.nav, nav) {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: calc(100dvh - 70px);
+    background: #0a0a0a;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    overflow-y: auto;
+    padding: 24px;
+  }
+  :is(.site-header, body.coin-page .header) :is(.nav, nav).is-open {
+    display: flex;
+  }
+  :is(.site-header, body.coin-page .header) :is(.nav, nav) a {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.site-header, body.coin-page .header) :is(.nav, nav) a::after {
+    transition: none;
+  }
+}
+
+html[data-locale-initializing] [data-header] {
+  visibility: hidden;
+}
