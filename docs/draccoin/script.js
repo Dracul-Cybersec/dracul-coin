@@ -50,8 +50,8 @@ document.getElementById('copy').addEventListener('click', async () => {
   const image = coin?.querySelector('img');
   if (!coin || !image) return;
 
-  coin.style.cursor = 'pointer';
-  coin.setAttribute('title', 'Clique para girar a moeda');
+  coin.style.cursor = 'default';
+  image.style.cursor = 'default';
 
   const triggerFlip = () => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;

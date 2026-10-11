@@ -822,9 +822,9 @@ h3 {
 }
 
 .content-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.018);
@@ -927,6 +927,7 @@ h3 {
 .content-card > div:not(.content-media) {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
   padding: 22px;
   height: 100%;
   box-sizing: border-box;
@@ -944,13 +945,15 @@ h3 {
 .content-card h3 {
   margin: 0;
   font-size: 20px;
-  line-height: 1.08;
+  line-height: 1.15;
+  min-height: 48px;
 }
 
 .content-card p:not(.content-type) {
   margin: 10px 0 0;
   color: var(--muted);
   font-size: 16px;
+  flex: 1 1 auto;
 }
 
 .content-card a,
@@ -958,8 +961,8 @@ h3 {
   display: inline-flex;
   width: fit-content;
   margin-top: auto;
-  padding-top: 18px;
   padding: 0;
+  padding-top: 18px;
   border: 0;
   background: transparent;
   color: #fff;

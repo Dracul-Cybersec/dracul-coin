@@ -4,8 +4,7 @@
   const requested = normalize(new URL(location.href).searchParams.get('lang'));
   let saved;
   try { saved = localStorage.getItem('dracul-language'); } catch {}
-  const detected = (navigator.languages || [navigator.language]).map(normalize).find(lang => supported.includes(lang));
-  let language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : detected || 'en';
+  let language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : 'en';
   const listeners = [];
   window.DraculLocale = {
     get language() { return language; },

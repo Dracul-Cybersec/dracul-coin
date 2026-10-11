@@ -354,14 +354,14 @@ h3{
   color:var(--muted);
 }
 
-/* Coin element - matching portfolio coin size, cursor pointer, NO BLUR */
+/* Coin element - matching portfolio coin size, cursor default, NO BLUR */
 .hero .coin,
 .coin{
   display:block;
   width:100%;
   max-width:none;
   margin:0;
-  cursor:pointer;
+  cursor:default !important;
   user-select:none;
   -webkit-user-drag:none;
 }
@@ -393,7 +393,7 @@ h3{
   clip-path:circle(44.5% at 50% 50%);
   filter:none !important;
   -webkit-filter:none !important;
-  cursor:pointer;
+  cursor:default !important;
 }
 
 .actions{

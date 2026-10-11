@@ -48,8 +48,8 @@ body.coin-page .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fon
 body.coin-page .hero .lead{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace;font-size:18px;line-height:1.7;color:var(--muted);margin:0;max-width:700px}
 body.coin-page .hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--red);line-height:1.5;margin:0 0 22px}
 body.coin-page .hero .button{min-height:52px;padding:12px 28px;font-size:15px;line-height:1.2}
-body.coin-page .coin{width:100%;max-width:none;margin:0;cursor:pointer}
-body.coin-page .coin img{width:100%;max-width:100%;height:auto;margin:0;clip-path:circle(44.5% at 50% 50%);filter:none!important;-webkit-filter:none!important;cursor:pointer}
+body.coin-page .coin{width:100%;max-width:none;margin:0;cursor:default!important}
+body.coin-page .coin img{width:100%;max-width:100%;height:auto;margin:0;clip-path:circle(44.5% at 50% 50%);filter:none!important;-webkit-filter:none!important;cursor:default!important}
 @media(max-width:780px){
  body.coin-page{--header-height:70px}
  body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1fr);gap:20px}
