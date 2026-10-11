@@ -41,7 +41,6 @@ body.coin-page .token-supply {font-size:18px;line-height:1.7}
 }
 body.coin-page .button,body.coin-page button:not(.nav-toggle){font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace}
 /* Keep the opening sections at the same scale and the header geometry stable. */
-html{scrollbar-gutter:stable}
 body.coin-page{--header-height:76px}
 body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
 body.coin-page .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(36px,4vw,58px);font-weight:950;line-height:1.1;letter-spacing:0;margin:18px 0 26px}
@@ -73,16 +72,9 @@ body.coin-page .actions{align-items:center}
 body.coin-page .coin.coin-entering{animation:coin-entrance-flip 1100ms cubic-bezier(.22,.7,.2,1) both;transform-origin:center;will-change:transform}
 @keyframes coin-entrance-flip{from{transform:perspective(1200px) rotateY(-180deg)}to{transform:perspective(1200px) rotateY(0deg)}}
 @media(prefers-reduced-motion:reduce){body.coin-page .coin.coin-entering{animation:none;transform:none;will-change:auto}}
-body.coin-page .brand img{clip-path:circle(44.5% at 50% 50%);filter:drop-shadow(0 0 18px rgba(239,32,32,.42))}
+body.coin-page .brand img{clip-path:none!important;filter:drop-shadow(0 0 18px rgba(239,32,32,.42))}
 /* Clip the entrance transform within the opening frame, not its scroll area. */
 body.coin-page .hero>.section-content:has(.coin-entering){overflow:clip}
-/* The language label and selector share the portfolio's baseline and spacing. */
-body.coin-page .header>.language-picker{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.5;color:var(--muted);margin:0;justify-self:end}
-body.coin-page .language-picker select{font:inherit;line-height:1.5;padding:7px;max-width:115px;border:1px solid var(--line);border-radius:6px;background:#101010;color:#f5f5f5}
-@media(min-width:1101px){body.coin-page .language-picker>span{display:inline}}
-@media(max-width:1100px){body.coin-page .language-picker>span{display:none}}
-@media(max-width:780px){body.coin-page .header>.language-picker{margin-left:auto;margin-right:12px}.language-picker select{max-width:104px}}
-.portfolio-language>span,body.coin-page .language-picker>span{white-space:nowrap;flex-shrink:0}
 /* Mobile sections flow with the content instead of trapping it in a desktop frame. */
 @media(max-width:780px){
  body.coin-page main>section{height:auto;min-height:calc(100svh - 70px);padding-top:24px;padding-bottom:24px;overflow:visible}

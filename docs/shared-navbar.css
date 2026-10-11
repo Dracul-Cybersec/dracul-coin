@@ -15,7 +15,6 @@
   left: 0;
   z-index: 50;
   display: flex;
-  height: var(--header-height);
   min-height: var(--header-height);
   align-items: center;
   justify-content: space-between;
@@ -28,6 +27,7 @@
   box-shadow: none;
   box-sizing: border-box;
   contain: layout;
+  line-height: 1.5;
   transition: background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -49,6 +49,7 @@
   height: 52px;
   object-fit: contain;
   filter: drop-shadow(0 0 18px rgba(239, 32, 32, 0.42));
+  clip-path: none !important;
 }
 
 :is(.site-header, body.coin-page .header) .brand strong,
@@ -85,17 +86,11 @@
 
 :is(.site-header, body.coin-page .header) :is(.nav, nav) a {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 20px;
-  margin: 0;
-  padding: 0;
   color: #e9e9e9;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 14px;
   font-weight: 800;
-  line-height: 20px;
+  line-height: 1.5;
   text-decoration: none;
   white-space: nowrap;
 }

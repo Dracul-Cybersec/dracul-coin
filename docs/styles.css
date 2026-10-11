@@ -1297,8 +1297,7 @@ h3 {
 
 .method-section {
   background:
-    linear-gradient(90deg, rgba(239, 32, 32, 0.12), transparent 46%),
-    var(--black-2);
+    linear-gradient(90deg, rgba(239, 32, 32, 0.12), transparent 46%);
 }
 
 .method-grid {

@@ -3,8 +3,11 @@
   const normalize = value => String(value || '').toLowerCase().split('-')[0];
   const requested = normalize(new URL(location.href).searchParams.get('lang'));
   let saved;
-  try { saved = localStorage.getItem('dracul-language'); } catch {}
-  let language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : 'en';
+  try {
+    saved = localStorage.getItem('dracul-user-lang');
+    localStorage.removeItem('dracul-language');
+  } catch {}
+  let language = supported.includes(requested) ? requested : (saved && supported.includes(saved)) ? saved : 'en';
   const listeners = [];
   window.DraculLocale = {
     get language() { return language; },
@@ -12,7 +15,10 @@
     set(value) {
       if (!supported.includes(value)) return;
       language = value;
-      try { localStorage.setItem('dracul-language', value); } catch {}
+      try {
+        localStorage.setItem('dracul-user-lang', value);
+        localStorage.removeItem('dracul-language');
+      } catch {}
       const url = new URL(location.href);
       url.searchParams.set('lang', value);
       history.replaceState(null, '', url);
