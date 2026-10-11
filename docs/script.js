@@ -643,16 +643,31 @@ contactForm?.addEventListener("submit", async (event) => {
   }
 
   let sentSuccess = false;
-  let isActivationPending = false;
   let responseErrMsg = "";
 
   try {
-    // 1. Try local PHP/Apache backend first
+    // Obtain sender public IP for metadata layout
+    let clientIp = "N/D";
+    try {
+      const ipRes = await fetch("https://api.ipify.org?format=json");
+      const ipData = await ipRes.json();
+      if (ipData && ipData.ip) clientIp = ipData.ip;
+    } catch {}
+
+    const timestamp = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+
+    // 1. Try local PHP/Apache backend
     try {
       const response = await fetch("/api/briefing.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, scope })
+        body: JSON.stringify({
+          name,
+          email,
+          scope,
+          ip: clientIp,
+          userAgent: navigator.userAgent
+        })
       });
 
       if (response.ok) {
@@ -667,40 +682,39 @@ contactForm?.addEventListener("submit", async (event) => {
       sentSuccess = false;
     }
 
-    // 2. Fallback for static host (GitHub Pages) or external delivery: FormSubmit AJAX to support@draculcybersec.com
+    // 2. Direct dispatch with structured layout (Quem mandou, IP, Data/Hora, Escopo)
     if (!sentSuccess) {
-      try {
-        const fbResponse = await fetch("https://formsubmit.co/ajax/support@draculcybersec.com", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            scope: scope,
-            message: scope,
-            origem: window.location.origin || "draculcybersec.com",
-            _subject: `[Briefing Dracul Cybersec] ${name} (${email})`,
-            _replyto: email,
-            _captcha: "false"
-          })
-        });
+      const mailtoSubject = encodeURIComponent(`[Briefing Red Team] ${name} (${email}) - IP: ${clientIp}`);
+      const mailtoBody = encodeURIComponent([
+        "==================================================",
+        "       DRACUL CYBERSEC // BRIEFING RECEBIDO       ",
+        "==================================================",
+        "",
+        "▶ QUEM MANDOU:",
+        `  Nome / Organização: ${name}`,
+        `  E-mail de Contato:  ${email}`,
+        "",
+        "▶ METADADOS DE ORIGEM:",
+        `  IP do Remetente:    ${clientIp}`,
+        `  Data e Hora:        ${timestamp}`,
+        `  Dispositivo:        ${navigator.userAgent}`,
+        "",
+        "▶ ESCOPO E ALVOS DA AVALIAÇÃO:",
+        "--------------------------------------------------",
+        scope,
+        "--------------------------------------------------",
+        "",
+        "// Transmitido via Dracul Cybersec Offensive Terminal"
+      ].join("\n"));
 
-        const fbData = await fbResponse.json().catch(() => ({}));
-        if (fbResponse.ok && (fbData.success === "true" || fbData.success === true)) {
-          sentSuccess = true;
-        } else if (fbData.message && fbData.message.toLowerCase().includes("activation")) {
-          // FormSubmit successfully received the form and dispatched the one-time activation email to support@draculcybersec.com
-          isActivationPending = true;
-          sentSuccess = true;
-        } else if (fbData.message) {
-          responseErrMsg = fbData.message;
-        }
-      } catch (fbErr) {
-        responseErrMsg = fbErr?.message || "";
+      const mailtoUrl = `mailto:support@draculcybersec.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+      // Open email client with prefilled layout
+      const mailWindow = window.open(mailtoUrl, "_blank");
+      if (!mailWindow) {
+        window.location.href = mailtoUrl;
       }
+      sentSuccess = true;
     }
 
     if (sentSuccess) {
@@ -709,41 +723,16 @@ contactForm?.addEventListener("submit", async (event) => {
       resetEmailCounter();
       resetScopeCounter();
 
-      if (isActivationPending) {
-        if (formStatus) {
-          formStatus.textContent = "Briefing registrado! Confirmação enviada para support@draculcybersec.com.";
-        }
-        showDraculToast({
-          title: "Briefing registrado com sucesso!",
-          message: "Recebemos sua mensagem! Foi enviado um link de ativação para support@draculcybersec.com — basta confirmá-lo no seu e-mail para ativar o recebimento contínuo da equipe técnica.",
-          type: "success",
-          duration: 9000
-        });
-      } else {
-        if (formStatus) {
-          formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
-        }
-        showDraculToast({
-          title: "Briefing enviado com sucesso!",
-          message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
-          type: "success",
-          duration: 7000
-        });
+      if (formStatus) {
+        formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
       }
-    } else {
-      // Direct mailto fallback so user never loses their briefing
-      const mailtoSubject = encodeURIComponent(`[Briefing Dracul Cybersec] ${name} (${email})`);
-      const mailtoBody = encodeURIComponent(`Nome / Organização: ${name}\nE-mail: ${email}\n\nEscopo e Alvo:\n${scope}`);
-      const mailtoUrl = `mailto:support@draculcybersec.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
       showDraculToast({
-        title: "Abertura no cliente de e-mail",
-        message: "Não foi possível transmitir via serviço automático. Abrindo seu cliente de e-mail com os dados preenchidos para envio direto a support@draculcybersec.com.",
-        type: "info",
-        duration: 8000
+        title: "Briefing enviado com sucesso!",
+        message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
+        type: "success",
+        duration: 7000
       });
-
-      window.location.href = mailtoUrl;
     }
   } catch (err) {
     showDraculToast({

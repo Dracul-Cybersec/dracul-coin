@@ -23,6 +23,9 @@ if (!$input) {
 $name = trim($input['name'] ?? $input['nome'] ?? '');
 $email = trim($input['email'] ?? '');
 $scope = trim($input['scope'] ?? $input['escopo'] ?? '');
+$ip = trim($input['ip'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'Desconhecido');
+$userAgent = trim($input['userAgent'] ?? $_SERVER['HTTP_USER_AGENT'] ?? 'Desconhecido');
+$date = date('d/m/Y H:i:s');
 
 if (empty($name) || empty($email) || empty($scope)) {
     http_response_code(400);
@@ -34,29 +37,36 @@ if (empty($name) || empty($email) || empty($scope)) {
 $logEntry = sprintf(
     "[%s] IP: %s | Nome: %s | Email: %s | Escopo: %s\n",
     date('Y-m-d H:i:s'),
-    $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+    $ip,
     $name,
     $email,
     str_replace(["\r", "\n"], ' ', $scope)
 );
 @file_put_contents('/var/www/html/briefings.log', $logEntry, FILE_APPEND | LOCK_EX);
 
-// Attempt mail transmission
+// Build structured layout email
 $to = 'support@draculcybersec.com';
-$subject = "=?UTF-8?B?" . base64_encode("[Briefing Dracul Cybersec] $name ($email)") . "?=";
-$message = "Novo briefing recebido via portal Dracul Cybersec:\n\n"
-         . "Nome/Organização: " . $name . "\n"
-         . "E-mail: " . $email . "\n"
-         . "Data/Hora: " . date('Y-m-d H:i:s') . "\n"
-         . "IP de Origem: " . ($_SERVER['REMOTE_ADDR'] ?? 'desconhecido') . "\n\n"
-         . "Escopo e Alvo:\n"
+$subject = "=?UTF-8?B?" . base64_encode("[Briefing Red Team] $name ($email) - IP: $ip") . "?=";
+
+$message = "==================================================\n"
+         . "       DRACUL CYBERSEC // BRIEFING RECEBIDO       \n"
+         . "==================================================\n\n"
+         . "▶ QUEM MANDOU:\n"
+         . "  Nome / Organização: " . $name . "\n"
+         . "  E-mail de Contato:  " . $email . "\n\n"
+         . "▶ METADADOS DE ORIGEM:\n"
+         . "  IP do Remetente:    " . $ip . "\n"
+         . "  Data e Hora:        " . $date . "\n"
+         . "  Dispositivo:        " . $userAgent . "\n\n"
+         . "▶ ESCOPO E ALVOS DA AVALIAÇÃO:\n"
          . "--------------------------------------------------\n"
          . $scope . "\n"
-         . "--------------------------------------------------\n";
+         . "--------------------------------------------------\n\n"
+         . "// Transmitido via Dracul Cybersec Offensive Terminal\n";
 
 $headers = "From: briefing@draculcybersec.com\r\n"
          . "Reply-To: $email\r\n"
-         . "X-Mailer: PHP/" . phpversion() . "\r\n"
+         . "X-Mailer: DraculCybersec-Mailer/1.0\r\n"
          . "Content-Type: text/plain; charset=UTF-8\r\n";
 
 @mail($to, $subject, $message, $headers);
