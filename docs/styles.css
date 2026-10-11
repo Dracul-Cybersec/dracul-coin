@@ -1664,6 +1664,8 @@ img[src*="book-pentest-cover"] {
   width: 100%;
   background: linear-gradient(90deg, #e50914, #ff3333);
   transform-origin: left;
+  will-change: transform;
+  pointer-events: none;
 }
 
 /* Mobile Toast Positioning: Centered at the bottom */

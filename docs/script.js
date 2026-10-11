@@ -500,7 +500,7 @@ function showDraculToast({ title, message, type = "success", duration = 6500 }) 
       <div class="dracul-toast-title">${title}</div>
       <p class="dracul-toast-message">${message}</p>
     </div>
-    <button class="dracul-toast-close" type="button" aria-label="Fechar notificação">&times;</button>
+    <button class="dracul-toast-close" type="button" aria-label="${window.DraculTranslate?.("Fechar notificação") || "Fechar notificação"}">&times;</button>
     <div class="dracul-toast-progress"></div>
   `;
 
@@ -514,13 +514,16 @@ function showDraculToast({ title, message, type = "success", duration = 6500 }) 
   });
 
   const progressBar = toast.querySelector(".dracul-toast-progress");
-  let startTime = Date.now();
+  const totalDuration = duration;
   let remainingTime = duration;
-  let timerId = null;
+  let lastTime = performance.now();
   let progressAnim = null;
+  let isPaused = false;
+  let isDismissed = false;
 
   function dismiss() {
-    if (timerId) clearTimeout(timerId);
+    if (isDismissed) return;
+    isDismissed = true;
     if (progressAnim) cancelAnimationFrame(progressAnim);
     toast.classList.remove("is-showing");
     toast.classList.add("is-hiding");
@@ -529,44 +532,46 @@ function showDraculToast({ title, message, type = "success", duration = 6500 }) 
     }, 380);
   }
 
-  function startProgress() {
-    startTime = Date.now();
-    timerId = setTimeout(dismiss, remainingTime);
-
-    function updateProgress() {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.max(0, 1 - elapsed / remainingTime);
-      if (progressBar) {
-        progressBar.style.transform = `scaleX(${progress})`;
-      }
-      if (progress > 0) {
-        progressAnim = requestAnimationFrame(updateProgress);
-      }
+  function tick(now) {
+    if (isPaused || isDismissed) return;
+    const delta = now - lastTime;
+    lastTime = now;
+    remainingTime = Math.max(0, remainingTime - delta);
+    const progress = Math.max(0, remainingTime / totalDuration);
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${progress})`;
     }
-    progressAnim = requestAnimationFrame(updateProgress);
+    if (remainingTime <= 0) {
+      dismiss();
+    } else {
+      progressAnim = requestAnimationFrame(tick);
+    }
   }
 
   function pauseProgress() {
-    if (timerId) clearTimeout(timerId);
+    if (isPaused || isDismissed) return;
+    isPaused = true;
     if (progressAnim) cancelAnimationFrame(progressAnim);
-    const elapsed = Date.now() - startTime;
-    remainingTime = Math.max(0, remainingTime - elapsed);
+  }
+
+  function resumeProgress() {
+    if (!isPaused || isDismissed || remainingTime <= 0) return;
+    isPaused = false;
+    lastTime = performance.now();
+    progressAnim = requestAnimationFrame(tick);
   }
 
   // Hover or touch to pause dismissal timer (LinkedIn behavior)
   toast.addEventListener("mouseenter", pauseProgress);
-  toast.addEventListener("mouseleave", () => {
-    if (remainingTime > 0) startProgress();
-  });
+  toast.addEventListener("mouseleave", resumeProgress);
   toast.addEventListener("touchstart", pauseProgress, { passive: true });
-  toast.addEventListener("touchend", () => {
-    if (remainingTime > 0) startProgress();
-  }, { passive: true });
+  toast.addEventListener("touchend", resumeProgress, { passive: true });
 
   const closeBtn = toast.querySelector(".dracul-toast-close");
   closeBtn?.addEventListener("click", dismiss);
 
-  startProgress();
+  lastTime = performance.now();
+  progressAnim = requestAnimationFrame(tick);
   return dismiss;
 }
 
@@ -634,12 +639,13 @@ contactForm?.addEventListener("submit", async (event) => {
   const originalBtnContent = submitBtn ? submitBtn.innerHTML : "Enviar briefing";
 
   if (submitBtn) {
-    submitBtn.innerHTML = `<span class="btn-spinner" aria-hidden="true"></span> Transmitindo briefing...`;
+    const transmittingText = window.DraculTranslate?.("Transmitindo briefing...") || "Transmitindo briefing...";
+    submitBtn.innerHTML = `<span class="btn-spinner" aria-hidden="true"></span> ${transmittingText}`;
   }
 
   if (formStatus) {
     formStatus.className = "form-status sr-only";
-    formStatus.textContent = "Transmitindo briefing com segurança...";
+    formStatus.textContent = window.DraculTranslate?.("Transmitindo briefing com segurança...") || "Transmitindo briefing com segurança...";
   }
 
   let sentSuccess = false;
@@ -715,7 +721,7 @@ contactForm?.addEventListener("submit", async (event) => {
       resetScopeCounter();
 
       if (formStatus) {
-        formStatus.textContent = "Briefing transmitido com sucesso para nossa equipe técnica!";
+        formStatus.textContent = window.DraculTranslate?.("Briefing transmitido com sucesso para nossa equipe técnica!") || "Briefing transmitido com sucesso para nossa equipe técnica!";
       }
 
       showDraculToast({
