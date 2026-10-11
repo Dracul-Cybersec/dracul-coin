@@ -145,12 +145,6 @@ const resetWheelAccumulator = () => {
 };
 
 const releaseWheelSnap = () => {
-  const targetTop = getSnapTargetTop(wheelSnapIndex);
-
-  if (Math.abs(window.scrollY - targetTop) > EDGE_TOLERANCE) {
-    scrollPageTo({ top: targetTop, behavior: "auto" });
-  }
-
   isWheelSnapping = false;
   wheelSnapDirection = 0;
   wheelSnapRetargeted = false;
@@ -183,12 +177,6 @@ window.addEventListener(
   "scrollend",
   () => {
     if (!isWheelSnapping) return;
-
-    const targetTop = getSnapTargetTop(wheelSnapIndex);
-    if (Math.abs(window.scrollY - targetTop) > EDGE_TOLERANCE) {
-      return;
-    }
-
     window.clearTimeout(wheelSnapTimer);
     releaseWheelSnap();
   },
