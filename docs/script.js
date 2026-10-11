@@ -654,67 +654,64 @@ contactForm?.addEventListener("submit", async (event) => {
       if (ipData && ipData.ip) clientIp = ipData.ip;
     } catch {}
 
-    const timestamp = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    // Structured briefing payload with metadata
+    const briefingPayload = {
+      name,
+      email,
+      scope,
+      ip: clientIp,
+      userAgent: navigator.userAgent,
+      timestamp
+    };
 
-    // 1. Try local PHP/Apache backend
-    try {
-      const response = await fetch("/api/briefing.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          scope,
-          ip: clientIp,
-          userAgent: navigator.userAgent
-        })
-      });
+    // AWS Cloud Serverless endpoint (e.g. AWS Lambda Function URL or API Gateway)
+    const awsEndpoint = window.DRACUL_AWS_ENDPOINT || "";
 
-      if (response.ok) {
-        const result = await response.json().catch(() => ({}));
-        if (result.success) {
-          sentSuccess = true;
-        } else if (result.error) {
-          responseErrMsg = result.error;
+    if (awsEndpoint) {
+      try {
+        const awsRes = await fetch(awsEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(briefingPayload)
+        });
+
+        if (awsRes.ok) {
+          const awsData = await awsRes.json().catch(() => ({}));
+          if (awsData.success !== false) {
+            sentSuccess = true;
+          } else {
+            responseErrMsg = awsData.error || "Erro retornado pelo servidor AWS.";
+          }
+        } else {
+          responseErrMsg = `Servidor AWS retornou código ${awsRes.status}.`;
         }
+      } catch (awsErr) {
+        responseErrMsg = awsErr?.message || "Falha na comunicação com a AWS Cloud.";
       }
-    } catch {
-      sentSuccess = false;
     }
 
-    // 2. Direct dispatch with structured layout (Quem mandou, IP, Data/Hora, Escopo)
-    if (!sentSuccess) {
-      const mailtoSubject = encodeURIComponent(`[Briefing Red Team] ${name} (${email}) - IP: ${clientIp}`);
-      const mailtoBody = encodeURIComponent([
-        "==================================================",
-        "       DRACUL CYBERSEC // BRIEFING RECEBIDO       ",
-        "==================================================",
-        "",
-        "▶ QUEM MANDOU:",
-        `  Nome / Organização: ${name}`,
-        `  E-mail de Contato:  ${email}`,
-        "",
-        "▶ METADADOS DE ORIGEM:",
-        `  IP do Remetente:    ${clientIp}`,
-        `  Data e Hora:        ${timestamp}`,
-        `  Dispositivo:        ${navigator.userAgent}`,
-        "",
-        "▶ ESCOPO E ALVOS DA AVALIAÇÃO:",
-        "--------------------------------------------------",
-        scope,
-        "--------------------------------------------------",
-        "",
-        "// Transmitido via Dracul Cybersec Offensive Terminal"
-      ].join("\n"));
+    // Local Apache/PHP backend fallback
+    if (!sentSuccess && !awsEndpoint) {
+      try {
+        const response = await fetch("/api/briefing.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(briefingPayload)
+        });
 
-      const mailtoUrl = `mailto:support@draculcybersec.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-      // Open email client with prefilled layout
-      const mailWindow = window.open(mailtoUrl, "_blank");
-      if (!mailWindow) {
-        window.location.href = mailtoUrl;
+        if (response.ok) {
+          const result = await response.json().catch(() => ({}));
+          if (result.success) {
+            sentSuccess = true;
+          } else if (result.error) {
+            responseErrMsg = result.error;
+          }
+        } else {
+          responseErrMsg = `Servidor retornou status ${response.status}.`;
+        }
+      } catch {
+        sentSuccess = false;
       }
-      sentSuccess = true;
     }
 
     if (sentSuccess) {
@@ -731,6 +728,13 @@ contactForm?.addEventListener("submit", async (event) => {
         title: "Briefing enviado com sucesso!",
         message: "Recebemos sua mensagem. Ela foi encaminhada para nossa equipe técnica em support@draculcybersec.com e retornaremos o contato em breve.",
         type: "success",
+        duration: 7000
+      });
+    } else {
+      showDraculToast({
+        title: "Falha na transmissão",
+        message: responseErrMsg || "Não foi possível transmitir o briefing via servidor no momento. Por favor, tente novamente em instantes.",
+        type: "error",
         duration: 7000
       });
     }
