@@ -877,12 +877,12 @@ contactForm?.addEventListener("submit", async (event) => {
       // DracCoin / Token questions
       if (q.includes("coin") || q.includes("drac") || q.includes("moeda") || q.includes("token") || q.includes("cripto") || q.includes("crypto") || q.includes("base") || q.includes("uniswap") || q.includes("contrato") || q.includes("contract")) {
         if (isEs) {
-          return "Dracul Coin (DRAC) es el token oficial del proyecto en la red Base Mainnet (Layer 2 de Ethereum).\n\n• Contrato oficial: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Suministro máximo: 100.000.000 DRAC\n• Par canónico: WETH / DRAC en Uniswap v2 (Base)\n\nPuedes explorar todos los detalles y transacciones en /draccoin/ o en BaseScan.";
+          return "Dracul Cybersec se enfoca en servicios de ciberseguridad ofensiva (Pentest y Red Team). Para consultar sobre el proyecto de criptomoneda Dracul Coin (DRAC), su contrato en Base y mercado Uniswap, visita la página dedicada con su propio asistente en /draccoin/.";
         }
         if (!isPt) {
-          return "Dracul Coin (DRAC) is an independent digital asset deployed on Base Mainnet (Ethereum Layer 2).\n\n• Contract address: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Maximum supply: 100,000,000 DRAC (18 decimals)\n• Canonical market: WETH / DRAC on Uniswap v2 (Base)\n\nYou can review full token metrics, allocations, and live BaseScan links at /draccoin/.";
+          return "Dracul Cybersec focuses on offensive cybersecurity services (Pentesting & Red Team operations). For inquiries regarding the Dracul Coin (DRAC) cryptocurrency, Base contract, and Uniswap pool, please visit the dedicated token page and assistant at /draccoin/.";
         }
-        return "Dracul Coin (DRAC) é o token do projeto emitido na rede Base Mainnet (Layer 2 da Ethereum).\n\n• Endereço do Contrato: 0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70\n• Supply máximo: 100.000.000 DRAC (18 decimais)\n• Mercado canônico: WETH / DRAC na Uniswap v2 na Base\n\nVocê pode consultar todos os detalhes técnicos, transparência on-chain e links do BaseScan acessando a página /draccoin/.";
+        return "A Dracul Cybersec é focada em serviços de cibersegurança ofensiva (Pentest Web/Mobile/API, Red Team e Active Directory). Para informações sobre a criptomoeda independente Dracul Coin (DRAC), contrato na Base e mercado Uniswap, acesse a página dedicada com assistente exclusivo em /draccoin/.";
       }
 
       // Services, Pentest, Red Team, Security Audit

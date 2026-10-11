@@ -42,7 +42,9 @@ body.coin-page .token-supply {font-size:18px;line-height:1.7}
 body.coin-page .button,body.coin-page button:not(.nav-toggle){font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace}
 /* Keep the opening sections at the same scale and the header geometry stable. */
 body.coin-page{--header-height:76px}
-body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+body.coin-page .hero{overflow:visible!important}
+body.coin-page .hero>.section-content{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;overflow:visible!important;max-height:none!important;padding-right:0!important;scrollbar-width:none!important}
+body.coin-page .hero>.section-content::-webkit-scrollbar{display:none!important}
 body.coin-page .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(36px,4vw,58px);font-weight:950;line-height:1.1;letter-spacing:0;margin:18px 0 26px}
 body.coin-page .hero .lead{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace;font-size:18px;line-height:1.7;color:var(--muted);margin:0;max-width:700px}
 body.coin-page .hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--red);line-height:1.5;margin:0 0 22px}
@@ -72,13 +74,11 @@ body.coin-page .actions{align-items:center}
 body.coin-page .coin.coin-entering{animation:coin-entrance-flip 1100ms cubic-bezier(.22,.7,.2,1) both;transform-origin:center;will-change:transform}
 @keyframes coin-entrance-flip{from{transform:perspective(1200px) rotateY(-180deg)}to{transform:perspective(1200px) rotateY(0deg)}}
 @media(prefers-reduced-motion:reduce){body.coin-page .coin.coin-entering{animation:none;transform:none;will-change:auto}}
-body.coin-page .brand img{clip-path:none!important;filter:drop-shadow(0 0 18px rgba(239,32,32,.42))}
-/* Clip the entrance transform within the opening frame, not its scroll area. */
-body.coin-page .hero>.section-content:has(.coin-entering){overflow:clip}
+body.coin-page .brand img{clip-path:circle(44.5% at 50% 50%)!important;filter:drop-shadow(0 0 18px rgba(239,32,32,.42))}
 /* Mobile sections flow with the content instead of trapping it in a desktop frame. */
 @media(max-width:780px){
  body.coin-page main>section{height:auto;min-height:calc(100svh - 70px);padding-top:24px;padding-bottom:24px;overflow:visible}
- body.coin-page .section-content,body.coin-page .hero>.section-content:has(.coin-entering){max-height:none;overflow:visible;min-width:0}
+ body.coin-page .section-content{max-height:none;overflow:visible;min-width:0}
  body.coin-page .hero>.section-content{display:flex;flex-direction:column;align-items:stretch;gap:12px}
  body.coin-page .hero>.section-content>div:first-child{display:contents}
  body.coin-page .hero .eyebrow{margin:0;font-size:12px}
