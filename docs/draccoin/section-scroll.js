@@ -115,21 +115,17 @@ const scrollPageTo = ({ top, behavior }) => {
 
 const getFramePositions = () => snapTargets.map((target) => getTargetFrameTop(target));
 
-const getNearestSnapIndex = () => {
+// Keep the active section until its content has genuinely been passed.
+// Choosing the nearest section top skips the last part of tall sections.
+const getCurrentSnapIndex = () => {
   const frames = getFramePositions();
-  const current = window.scrollY;
-  let bestIndex = 0;
-  let bestDistance = Infinity;
+  let activeIndex = 0;
 
   frames.forEach((position, index) => {
-    const distance = Math.abs(position - current);
-    if (distance < bestDistance) {
-      bestDistance = distance;
-      bestIndex = index;
-    }
+    if (position <= window.scrollY + EDGE_TOLERANCE) activeIndex = index;
   });
 
-  return bestIndex;
+  return activeIndex;
 };
 
 const getSnapTargetTop = (index) => {
@@ -199,6 +195,8 @@ const snapToTarget = (target, behavior = "smooth") => {
 
 const elementCanScrollVertically = (element, direction) => {
   if (!(element instanceof HTMLElement)) return false;
+  // Visible overflow is handled by the document, not by a nested scrollbar.
+  if (!["auto", "scroll"].includes(getComputedStyle(element).overflowY)) return false;
   if (element.scrollHeight <= element.clientHeight + 1) return false;
 
   if (direction > 0) {
@@ -234,6 +232,30 @@ const handleWheelSnap = (event) => {
 
   if (wheelIsExempt(event, direction)) return;
 
+  const currentIndex = getCurrentSnapIndex();
+
+  // Preserve section-to-section wheel snapping on desktop, while letting the
+  // document scroll naturally through sections taller than the viewport.
+  // The same native behavior also allows access to the footer after the last section.
+  if (!isWheelSnapping) {
+    const section = snapTargets[currentIndex];
+    const sectionHeight = section.getBoundingClientRect().height;
+    const contentViewportHeight = window.innerHeight - getSnapOffset();
+    const isTallSection = sectionHeight > contentViewportHeight + EDGE_TOLERANCE;
+    const sectionBottom = getDocumentTop(section) + sectionHeight;
+    const sectionTop = getSnapTargetTop(currentIndex);
+
+    if (
+      (direction > 0 && isTallSection && sectionBottom > window.scrollY + window.innerHeight + EDGE_TOLERANCE) ||
+      (direction < 0 && window.scrollY > sectionTop + EDGE_TOLERANCE) ||
+      (direction > 0 && currentIndex === snapTargets.length - 1) ||
+      (clampSnapIndex(currentIndex + direction) === currentIndex)
+    ) {
+      resetWheelAccumulator();
+      return;
+    }
+  }
+
   event.preventDefault();
 
   wheelDeltaAccumulator += event.deltaY;
@@ -258,7 +280,6 @@ const handleWheelSnap = (event) => {
     return;
   }
 
-  const currentIndex = getNearestSnapIndex();
   const nextIndex = clampSnapIndex(currentIndex + snapDirection);
   if (nextIndex === currentIndex) return;
 
@@ -296,8 +317,8 @@ document.addEventListener('click', event => {
  if (!link || !scrollToHash(link.hash, matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth')) return;
  event.preventDefault(); history.pushState(null, '', link.hash);
 });
-// Native page scrolling must remain available even when a section is taller than the viewport.
-// Do not intercept desktop wheel input to jump between content sections.
+// Keep the portfolio-style section transitions while allowing long sections to flow normally.
+window.addEventListener('wheel', handleWheelSnap, {passive:false});
 window.addEventListener('scroll', () => { syncHeader(); syncActiveNav(); }, {passive:true});
 window.addEventListener('load', () => { syncLayout(); if (location.hash) scrollToHash(location.hash, 'auto'); });
 window.addEventListener('hashchange', () => { if (location.hash) scrollToHash(location.hash); });
