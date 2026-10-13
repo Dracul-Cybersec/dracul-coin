@@ -565,14 +565,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 /* Sections and main layout */
 main>section{
-  height:calc(100svh - var(--header-height));
-  min-height:0;
+  /* Content can exceed one viewport; do not clip the bottom of a section. */
+  min-height:calc(100svh - var(--header-height));
+  height:auto;
   padding-top:28px;
   padding-bottom:28px;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  overflow:hidden;
+  overflow:visible;
   scroll-snap-align:none;
   scroll-snap-stop:normal;
 }
@@ -580,12 +581,9 @@ main>section{
 .section-content{
   width:100%;
   min-height:0;
-  max-height:100%;
-  overflow-y:auto;
-  overflow-x:hidden;
-  scrollbar-width:thin;
-  scrollbar-color:#ef2020 #101010;
-  padding-right:8px;
+  max-height:none;
+  overflow:visible;
+  padding-right:0;
 }
 
 .section-content:focus-visible{outline:1px solid var(--red);outline-offset:4px}

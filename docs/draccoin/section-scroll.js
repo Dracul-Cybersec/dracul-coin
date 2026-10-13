@@ -296,7 +296,8 @@ document.addEventListener('click', event => {
  if (!link || !scrollToHash(link.hash, matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth')) return;
  event.preventDefault(); history.pushState(null, '', link.hash);
 });
-window.addEventListener('wheel', handleWheelSnap, {passive:false});
+// Native page scrolling must remain available even when a section is taller than the viewport.
+// Do not intercept desktop wheel input to jump between content sections.
 window.addEventListener('scroll', () => { syncHeader(); syncActiveNav(); }, {passive:true});
 window.addEventListener('load', () => { syncLayout(); if (location.hash) scrollToHash(location.hash, 'auto'); });
 window.addEventListener('hashchange', () => { if (location.hash) scrollToHash(location.hash); });
