@@ -1040,3 +1040,25 @@ footer span{margin-right:auto}
     line-height:1.5;
   }
 }
+
+/* Keep the translated Uniswap panel within short, narrow desktop frames. */
+@media (min-width:781px) and (max-width:1100px) {
+  body.coin-page #uniswap .market-panel {
+    padding:clamp(12px,1.7vh,17px);
+  }
+  body.coin-page #uniswap .market-panel code {
+    margin:6px 0 8px;
+    padding:8px 12px;
+  }
+  body.coin-page #uniswap .market-panel .actions {
+    margin:8px 0;
+  }
+  body.coin-page #uniswap .market-panel .button {
+    min-height:38px;
+    padding:8px 12px;
+    font-size:12.5px;
+  }
+  body.coin-page #uniswap .market-panel p {
+    margin:8px 0 6px;
+  }
+}
