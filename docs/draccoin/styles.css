@@ -963,3 +963,80 @@ footer span{margin-right:auto}
     gap:16px;
   }
 }
+
+/*
+ * Desktop section frames: keep all text visible inside a single viewport when
+ * space permits. On short/zoomed screens the section may grow naturally rather
+ * than clipping content or introducing a second (red) scrollbar.
+ * Preserve the section wheel navigation from section-scroll.js.
+ */
+@media (min-width:781px) {
+  body.coin-page main > section:not(.hero) {
+    padding-block:clamp(12px,2.3vh,24px);
+  }
+
+  body.coin-page main > section:is(#token-details,#uniswap,#project) .eyebrow {
+    margin-bottom:8px;
+  }
+  body.coin-page main > section:is(#token-details,#uniswap,#project) h2 {
+    font-size:clamp(28px,3vw,43px);
+    line-height:1.1;
+    margin:6px 0 12px;
+  }
+  body.coin-page main > section:is(#token-details,#uniswap,#project) .actions {
+    margin-top:14px;
+    gap:12px;
+  }
+  body.coin-page main > section:is(#token-details,#uniswap,#project) .panel {
+    padding:clamp(15px,2.2vh,24px);
+  }
+
+  body.coin-page #token-details .token-explainer {
+    margin-top:12px;
+    gap:14px;
+  }
+  body.coin-page #token-details .token-explainer h3 {
+    font-size:clamp(16px,1.15vw,19px);
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+  body.coin-page #token-details .token-explainer p,
+  body.coin-page #project .project-grid p,
+  body.coin-page #uniswap .section-content > p:not(.eyebrow),
+  body.coin-page #uniswap .market-panel p {
+    font-size:clamp(13px,1.1vw,16px);
+    line-height:1.5;
+  }
+
+  body.coin-page #uniswap .metrics {
+    margin-top:14px;
+  }
+  body.coin-page #uniswap .metrics div {
+    padding:clamp(12px,2vh,20px);
+  }
+  body.coin-page #uniswap .metrics strong {
+    font-size:clamp(17px,1.8vw,22px);
+  }
+  body.coin-page #uniswap .market-panel code {
+    margin:8px 0 12px;
+  }
+  body.coin-page #uniswap .market-panel .actions {
+    margin:12px 0;
+  }
+  body.coin-page #uniswap .market-panel .button {
+    min-height:42px;
+    padding:10px 14px;
+    font-size:13px;
+  }
+  body.coin-page #uniswap .market-panel p {
+    margin:12px 0 8px;
+  }
+
+  body.coin-page #project .project-grid {
+    gap:14px;
+  }
+  body.coin-page #project .intro {
+    font-size:clamp(13px,1.1vw,16px);
+    line-height:1.5;
+  }
+}
