@@ -3,7 +3,8 @@
 **Last reviewed:** 2026-10-19  
 **Official website:** https://www.draculcybersec.com/draccoin  
 **Project repository:** https://github.com/Dracul-Cybersec/dracul-coin  
-**Contact:** support@draculcybersec.com
+**Contact:** support@draculcybersec.com  
+**Official X:** https://x.com/DraculCoinDRAC
 
 > DRAC is an experimental digital asset and software project on Base Mainnet. This media kit is informational, not financial advice or a promise of returns. Liquidity is currently small and experimental. No independent third-party security audit is claimed.
 
