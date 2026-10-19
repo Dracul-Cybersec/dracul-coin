@@ -108,6 +108,10 @@ See [AUDIT.md](AUDIT.md) and [SECURITY.md](SECURITY.md).
 
 Created by [Fabio Silva Monteiro](https://www.linkedin.com/in/fabio-silva-monteiro/).
 
+## Press & media
+
+For multilingual project descriptions, verified project facts, and responsible social-media copy, see the [DRAC official press & media kit](docs/PRESS_KIT.md).
+
 ## Official links
 
 - Official website: https://draculcybersec.com/
