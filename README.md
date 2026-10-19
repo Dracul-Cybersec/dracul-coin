@@ -112,6 +112,8 @@ Created by [Fabio Silva Monteiro](https://www.linkedin.com/in/fabio-silva-montei
 
 For multilingual project descriptions, verified project facts, and responsible social-media copy, see the [DRAC official press & media kit](docs/PRESS_KIT.md).
 
+For verifiable token facts and official links used by market-data reviewers, see the [DRAC token information and listing evidence](docs/LISTING_EVIDENCE.md).
+
 ## Official links
 
 - Official website: https://draculcybersec.com/
