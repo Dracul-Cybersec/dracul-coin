@@ -116,6 +116,8 @@ For verifiable token facts and official links used by market-data reviewers, see
 
 For reproducible block-specific reserve and pool data and an explicit security/LP-lock risk checklist, see the [on-chain transparency report](docs/TRANSPARENCY.md).
 
+For independent community scrutiny, see the [open technical review checklist](https://github.com/Dracul-Cybersec/dracul-coin/issues/6). This invitation is **not** a completed independent audit.
+
 ## Official links
 
 - Official website: https://draculcybersec.com/
