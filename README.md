@@ -114,6 +114,8 @@ For multilingual project descriptions, verified project facts, and responsible s
 
 For verifiable token facts and official links used by market-data reviewers, see the [DRAC token information and listing evidence](docs/LISTING_EVIDENCE.md).
 
+For reproducible block-specific reserve and pool data and an explicit security/LP-lock risk checklist, see the [on-chain transparency report](docs/TRANSPARENCY.md).
+
 ## Official links
 
 - Official website: https://draculcybersec.com/
