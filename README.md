@@ -119,6 +119,7 @@ For multilingual project descriptions, verified project facts, and responsible s
 - BaseScan: https://basescan.org/token/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
 - Verified token code: https://basescan.org/address/0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70#code
 - Uniswap trade: https://app.uniswap.org/swap?chain=base&inputCurrency=ETH&outputCurrency=0xb193cFE2E4A807Ff3dF920139bfA3785F8094c70
+- X (official DRAC account): https://x.com/DraculCoinDRAC
 - GitHub organization: https://github.com/Dracul-Cybersec
 - Project Page: https://dracul-cybersec.github.io/dracul-coin/
 - Security/contact: **support@draculcybersec.com**
