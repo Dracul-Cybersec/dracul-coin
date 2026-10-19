@@ -8,6 +8,7 @@ Updated: 2026-10-19. This page is a reference for community reviewers and token-
 - **Network:** Base Mainnet (chain ID 8453)
 - **Official project page:** https://www.draculcybersec.com/draccoin
 - **Official X:** https://x.com/DraculCoinDRAC
+- **Official Telegram:** https://t.me/DraculCoinDRAC
 - **Public verification/introduction post:** https://x.com/DraculCoinDRAC/status/2112159734635647217
 - **Public tokenomics post:** https://x.com/DraculCoinDRAC/status/2112161657321378020
 - **Repository:** https://github.com/Dracul-Cybersec/dracul-coin
