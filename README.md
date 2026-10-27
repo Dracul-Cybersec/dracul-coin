@@ -19,6 +19,14 @@
 - **Contract source verified on BaseScan:** DRAC token
 - Liquidity remains experimental/small
 
+## Get started and verify the project
+
+- **[Start here: independently verify DRAC, wallet safety and ways to contribute](docs/START_HERE.md)** — no wallet connection, transaction or purchase is needed to inspect project facts.
+- **[Market-data readiness and dated evidence checklist](docs/MARKET_DATA_READINESS.md)** — openly documents shallow liquidity, third-party observations, outstanding verification work and honest prerequisites before another listing application.
+- Community technical feedback is welcome through [GitHub Issues](https://github.com/Dracul-Cybersec/dracul-coin/issues). Please do not post secrets or unpatched vulnerability details publicly; see [SECURITY.md](SECURITY.md).
+
+The project does not encourage self-trading, wash trading, fabricated holders or purchased social activity. Documentation alone does not establish organic adoption or eligibility for a market-data listing.
+
 ## Canonical Base Mainnet addresses
 
 | Component | Address |
